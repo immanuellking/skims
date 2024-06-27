@@ -32,7 +32,7 @@ export default function Header() {
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 2500,
+            delay: 3500,
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
@@ -48,7 +48,7 @@ export default function Header() {
           ))}
         </Swiper>
       </div>
-      <div className="w-[95%] mx-auto flex justify-between items-center py-3 sm:py-6">
+      <div className="w-[95%] mx-auto flex justify-between items-center py-2 sm:py-4">
         <div className="w-[80px] lg:w-[100px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ export default function Header() {
                 <HoverCard>
                   <HoverCardTrigger>
                     <div className="flex items-center cursor-pointer">
-                      <p className="text-sm font-medium">{item.title}</p>
+                      <p className="text-xs font-medium">{item.title}</p>
                       {item.linksContent && <HiArrowSmDown />}
                     </div>
                   </HoverCardTrigger>
@@ -189,8 +189,8 @@ const MobileNav = ({
         <HiOutlineX className="text-3xl" onClick={() => setOpen(false)} />
       </div>
       <div className="space-y-6 sm:space-y-4">
-        {dropdown.map((item) => (
-          <div className="flex justify-between border-b-2 border-black py-1 md:py-3">
+        {dropdown.map((item, index) => (
+          <div className="flex justify-between border-b-2 border-black py-1 md:py-3" key={index} >
             <p className="text-base sm:text-lg">{item.title}</p>
             <HiOutlineChevronDown className="text-lg" />
           </div>
