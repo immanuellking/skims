@@ -1,9 +1,8 @@
-
 export const texts = [
-    "International Shipping Available",
-    "Curated Pickup For you",
-    "Return Policy",
-  ];
+  "International Shipping Available",
+  "Curated Pickup For you",
+  "Return Policy",
+];
 
 export const dropdown = [
   {
@@ -234,5 +233,27 @@ export const dropdown = [
         subText: "Our Best-Selling Buttery-Soft Styles With Next-Level Stretch",
       },
     ],
+  },
+];
+
+export const hero = [
+  {
+    title: "LAST CHANCE TO BUY",
+    subText:
+      "Shop our most-wanted shapewear, lounge, intimates, and more at special discounted prices",
+    img: "/hero/hero-1.webp",
+    imgMobile: "/hero/hero-mobile-1.webp",
+  },
+  {
+    title: "BEST SELLERS",
+    subText: "The must-haves all your friends have been telling you about",
+    img: "/hero/hero-2.webp",
+    imgMobile: "/hero/hero-mobile-2.webp",
+  },
+  {
+    title: "COMING SOON NEW RAW EDGE",
+    subText: "Our smooth, raw-cut cotton with a sexy edge in new styles",
+    img: "/hero/hero-3.webp",
+    imgMobile: "/hero/hero-mobile-3.webp",
   },
 ];
