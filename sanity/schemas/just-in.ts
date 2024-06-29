@@ -41,7 +41,7 @@ export default defineType({
       type: "string",
       options: {
         list: [
-          { title: "Hot Sale", value: "hot_sale" },
+          { title: "Hot Sale", value: "hot sale" },
           { title: "New", value: "new" },
           { title: "Nil", value: "nil" },
         ],
