@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { hero } from "@/lib/data";
 import Image from "next/image";
+import Button from "./button";
 
 export default function Hero() {
   return (
@@ -70,9 +71,7 @@ export default function Hero() {
                   {subText}
                 </p>
               </div>
-              <button className="w-56 xs:w-64 bg-[#EEE4DA] py-2 xs:py-3 rounded-md font-semibold transition-all duration-200 ease-in-out hover:text-white text-sm xs:text-base hover:bg-[#d9bb9e]">
-                Shop Now
-              </button>
+              <Button />
             </div>
           </SwiperSlide>
         ))}
