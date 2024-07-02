@@ -257,3 +257,22 @@ export const hero = [
     imgMobile: "/hero/hero-mobile-3.webp",
   },
 ];
+
+export const categories = [
+  {
+    img: "/categories/panties.webp",
+    text: "panties shop"
+  },
+  {
+    img: "/categories/new.webp",
+    text: "new arrivals"
+  },
+  {
+    img: "/categories/winter.webp",
+    text: "the winter shop"
+  },
+  {
+    img: "/categories/mens.webp",
+    text: "mens"
+  },
+]
