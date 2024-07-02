@@ -36,20 +36,20 @@ export default function Header() {
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          className="w-full h-8 bg-[#AB8F80] flex justify-center items-center"
+          className="w-full h-5 xs:h-8 bg-[#AB8F80] flex justify-center items-center"
         >
           {texts.map((text, index) => (
             <SwiperSlide
               key={index}
-              className="w-full flex justify-center items-center text-white font-medium text-[13px] sm:text-sm"
+              className="w-full flex justify-center items-center text-white font-normal xs:font-medium text-[11px] xs:text-[13px] sm:text-sm"
             >
               {text}
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <div className="w-[95%] mx-auto flex justify-between items-center py-2 sm:py-4">
-        <div className="w-[80px] lg:w-[100px]">
+      <div className="w-[95%] mx-auto flex justify-between items-center py-1 xs:py-2 sm:py-4">
+        <div className="w-[65px] xs:w-[80px] lg:w-[100px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -152,16 +152,16 @@ export default function Header() {
         </ul>
         <div className="flex gap-3 lg:gap-6">
           <div>
-            <HiOutlineHeart size={26} />
+            <HiOutlineHeart className="text-2xl  xs:text-[26px]" />
           </div>
           <div>
-            <HiOutlineShoppingBag size={26} />
+            <HiOutlineShoppingBag className="text-2xl  xs:text-[26px]" />
           </div>
-          <HiUserCircle size={28} />
+          <HiUserCircle className="text-[26px]  xs:text-[28px]" />
         </div>
 
         <div className="lg:hidden">
-          <HiMenuAlt3 fontSize={32} onClick={() => setOpen(true)} />
+          <HiMenuAlt3 className="text-3xl  xs:text-[32px]" onClick={() => setOpen(true)} />
         </div>
       </div>
       <MobileNav open={open} setOpen={setOpen} />
@@ -179,7 +179,7 @@ const MobileNav = ({
   return (
     <div
       className={cn(
-        "lg:hidden absolute top-0 right-[-1000px] w-screen h-screen bg-gray-100 z-50 px-5 py-8 space-y-8 sm:space-y-12 transition-all duration-300 ease-in",
+        "lg:hidden fixed top-0 bottom-0 right-[-1000px] w-full h-full bg-gray-100 z-50 px-5 py-8 space-y-8 sm:space-y-12 transition-all duration-300 ease-in",
         {
           "right-0": open,
         }
