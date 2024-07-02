@@ -15,9 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased overflow-x-hidden w-full`}>
+      <body
+        className={`${poppins.className} antialiased overflow-x-hidden w-full`}
+      >
         <Header />
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }
