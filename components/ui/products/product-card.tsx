@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function ProductCard({ product }: { product: JustIn }) {
   return (
-    <div className="relative w-[300px] space-y-2 group cursor-pointer">
-      <div className="relative w-[300px] h-[300px] overflow-hidden">
+    <div className="relative w-full space-y-2 group cursor-pointer">
+      <div className="relative w-[200px] sm:w-[300px] h-[300px] overflow-hidden">
         <Image
           src={urlForImage(product.images[0])}
           alt={product.name}
@@ -30,7 +30,9 @@ export default function ProductCard({ product }: { product: JustIn }) {
       )}
       <div className="w-full text-center text-[13px] uppercase font-semibold space-y-1 text-[#62554A]">
         <p>
-          {product.tag} {product.name}
+          {product.tag}
+          <br className="lg:hidden" />
+          {product.name}
         </p>
         <p>&#8358; {product.price.toLocaleString()}</p>
       </div>
