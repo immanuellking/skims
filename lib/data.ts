@@ -261,18 +261,31 @@ export const hero = [
 export const categories = [
   {
     img: "/categories/panties.webp",
-    text: "panties shop"
+    text: "panties shop",
   },
   {
     img: "/categories/new.webp",
-    text: "new arrivals"
+    text: "new arrivals",
   },
   {
     img: "/categories/winter.webp",
-    text: "the winter shop"
+    text: "the winter shop",
   },
   {
     img: "/categories/mens.webp",
-    text: "mens"
+    text: "mens",
   },
-]
+];
+
+export const shopNow = [
+  {
+    title: "two piece sets",
+    text: "Everyday sets for lounging and beyond",
+    img: "/shop-now/two-piece.webp",
+  },
+  {
+    title: "the sleep edit",
+    text: "Your old pajamas can’t compete with our ultra-soft and comfy sleep sets",
+    img: "/shop-now/sleep-edit.webp",
+  },
+];
