@@ -1,6 +1,7 @@
 import Categories from "@/components/categories";
 import Hero from "@/components/hero";
 import JustIN from "@/components/just-in";
+import ShopNow from "@/components/shop-now";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <JustIN title="Just In" type="justIn" />
       <Categories />
       <JustIN title="Trending" type="trending" disable={true} />
+      <ShopNow />
     </main>
   );
 }
