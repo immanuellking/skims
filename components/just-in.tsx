@@ -18,7 +18,11 @@ export default async function JustIN({
         <h1>{title}</h1>
       </div>
       <Suspense fallback={<ProductsCardsSkeleton />}>
-        <Products type={type} />
+        <Products
+          type={type}
+          parentClass="w-[95%] sm:w-[90%] mx-auto"
+          cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4"
+        />
       </Suspense>
       <div className="w-full flex justify-center mt-5 sm:mt-10">
         <button
