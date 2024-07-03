@@ -18,7 +18,7 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
-        className="w-full h-[80vh] hidden lg:block"
+        className="w-full h-[85vh] hidden lg:block"
       >
         {hero.map(({ img, subText, title }, idx) => (
           <SwiperSlide key={idx} className={`w-full h-full relative`}>
