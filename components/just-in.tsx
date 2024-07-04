@@ -21,13 +21,13 @@ export default async function JustIN({
         <Products
           type={type}
           parentClass="w-[95%] sm:w-[90%] mx-auto"
-          cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4"
+          cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4 p-0 overflow-hidden"
         />
       </Suspense>
       <div className="w-full flex justify-center mt-5 sm:mt-10">
         <button
           className={cn(
-            "py-2 xs:py-3 uppercase w-60 xs:w-72 bg-[#62554A] hover:bg-[#8b7a6c] transition-all ease-in duration-300 text-white text-sm xs:text-base font-medium xs:font-semibold rounded-sm",
+            "py-3 uppercase w-60 xs:w-72 bg-[#62554A] hover:bg-[#8b7a6c] transition-all ease-in duration-300 text-white text-sm xs:text-base font-medium xs:font-semibold rounded-sm",
             { hidden: disable }
           )}
         >
