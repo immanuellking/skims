@@ -20,8 +20,8 @@ const ProductCardSkeletons = ({ className }: { className?: string }) => {
 export const ProductsCardsSkeleton = () => {
   return (
     <div className=" w-[90%] mx-auto flex justify-between">
-      <ProductCardSkeletons className="w-[140px] xs:w-[180px]" />
-      <ProductCardSkeletons className="w-[140px] xs:w-[180px]" />
+      <ProductCardSkeletons className="w-[48%] xs:w-[180px]" />
+      <ProductCardSkeletons className="w-[48%] xs:w-[180px]" />
       <ProductCardSkeletons className="hidden sm:block" />
       <ProductCardSkeletons className="hidden lg:block" />
     </div>
