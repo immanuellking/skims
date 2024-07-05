@@ -8,7 +8,7 @@ type SanityBase = {
 };
 
 interface JustIn extends SanityBase {
-  _type: "justIn";
+  _type: string;
   tag: string;
   name: string;
   slug: string;
@@ -17,4 +17,13 @@ interface JustIn extends SanityBase {
   status: string;
   size: string[];
   images: Image[];
+}
+
+interface ReviewPosts extends SanityBase {
+  _type: "reviews";
+  customer_name: string;
+  slug: string;
+  type: string;
+  comment: string;
+  image: Image;
 }
