@@ -3,7 +3,7 @@ import Products from "./ui/products/products";
 import { ProductsCardsSkeleton } from "./skeletons";
 import { cn } from "@/lib/utils";
 
-export default async function JustIN({
+export default function JustIN({
   title,
   type,
   disable,
@@ -21,7 +21,7 @@ export default async function JustIN({
         <Products
           type={type}
           parentClass="w-[95%] sm:w-[90%] mx-auto"
-          cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4 p-0 overflow-hidden"
+          cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4 overflow-hidden"
         />
       </Suspense>
       <div className="w-full flex justify-center mt-5 sm:mt-10">
