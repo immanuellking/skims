@@ -48,7 +48,7 @@ export default function Header() {
           ))}
         </Swiper>
       </div>
-      <div className="w-[95%] mx-auto flex justify-between items-center py-1 xs:py-2 sm:py-4">
+      <div className="w-[95%] mx-auto flex justify-between items-center py-1.5 xs:py-2 sm:py-4">
         <div className="w-[65px] xs:w-[80px] lg:w-[100px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
