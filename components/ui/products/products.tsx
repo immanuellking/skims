@@ -17,22 +17,39 @@ export default async function Products({
   parentClass: string;
   cardClass: string;
 }) {
+  const { error, products } = await fetchProducts(type);
 
-  const products = await fetchProducts(type);
-  
-  return (
-    <Carousel opts={{ align: "start" }} className={parentClass}>
-      <CarouselContent>
-        {products.map((product) => {
-          return (
-            <CarouselItem className={cardClass} key={product.id}>
-              <ProductCard product={product} />
-            </CarouselItem>
-          );
-        })}
-      </CarouselContent>
-      <CarouselPrevious className="hidden sm:flex" />
-      <CarouselNext className="hidden sm:flex" />
-    </Carousel>
-  );
+  // if (error) {
+  //   return (
+  //     <section className="w-[95%] sm:w-[90%] mx-auto h-[350px]">
+  //       <p>{message}</p>
+  //     </section>
+  //   );
+  // }
+
+  if (!error && products?.length) {
+    return (
+      <Carousel opts={{ align: "start" }} className={parentClass}>
+        <CarouselContent>
+          {products.map((product) => {
+            return (
+              <CarouselItem className={cardClass} key={product.id}>
+                <ProductCard product={product} />
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+        <CarouselPrevious className="hidden sm:flex" />
+        <CarouselNext className="hidden sm:flex" />
+      </Carousel>
+    );
+  } else {
+    return (
+      <section className="w-[95%] sm:w-[90%] mx-auto h-[350px] flex items-center justify-center text-center">
+        <p className="uppercase text-lg xs:text-xl sm:text-2xl">
+          Failed to fetch Products for this section ❌
+        </p>
+      </section>
+    );
+  }
 }
