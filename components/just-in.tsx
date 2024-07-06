@@ -24,7 +24,7 @@ export default function JustIN({
           cardClass="basis-1/2 sm:basis-1/3 lg:basis-1/4 overflow-hidden"
         />
       </Suspense>
-      <div className="w-full flex justify-center mt-5 sm:mt-10">
+      <div className="w-full flex justify-center mt-8 sm:mt-10">
         <button
           className={cn(
             "py-3 uppercase w-60 xs:w-72 bg-[#62554A] hover:bg-[#8b7a6c] transition-all ease-in duration-300 text-white text-sm xs:text-base font-medium xs:font-semibold rounded-sm",
