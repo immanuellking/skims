@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function ProductCard({ product }: { product: JustIn }) {
   return (
-    <div className="relative w-full sm:w-[300px] space-y-2 cursor-pointer">
-      <div className="relative w-full h-[220px] sm:w-[300px] sm:h-[300px]">
+    <div className="relative w-full lg:w-[300px] space-y-2 cursor-pointer">
+      <div className="relative w-full h-[220px] lg:w-[300px] lg:h-[300px]">
         <Image
           src={urlForImage(product.images[0])}
           alt={product.name}
