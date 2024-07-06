@@ -3,6 +3,7 @@ import Fits from "@/components/fits";
 import Hero from "@/components/hero";
 import Hype from "@/components/hype";
 import JustIN from "@/components/just-in";
+import Reviews from "@/components/reviews";
 import ShopNow from "@/components/shop-now";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <ShopNow />
       <Fits />
       <Hype />
+      <Reviews />
     </main>
   );
 }
