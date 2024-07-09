@@ -289,3 +289,29 @@ export const shopNow = [
     img: "/shop-now/sleep-edit.webp",
   },
 ];
+
+export const footer = {
+  help: {
+    title: "help",
+    links: [
+      "Return Policy",
+      "Start Return",
+      "Ordering",
+      "Shipping",
+      "International",
+      "FAQs",
+      "Careers",
+    ],
+  },
+  more: {
+    title: "more",
+    links: [
+      "About",
+      "Influencers",
+      "Stocks",
+      "Resources",
+      "E-Gift Card",
+      "Contact Us",
+    ],
+  },
+};
