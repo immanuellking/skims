@@ -29,26 +29,30 @@ export default function Header() {
     <header>
       <div className="w-full">
         <Swiper
-          spaceBetween={30}
+          spaceBetween={0}
           centeredSlides={true}
+          loop={true}
           autoplay={{
             delay: 3500,
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          className="w-full h-5 xs:h-8 bg-[#AB8F80] flex justify-center items-center"
+          className="w-full bg-[#AB8F80]"
         >
           {texts.map((text, index) => (
             <SwiperSlide
               key={index}
-              className="w-full flex justify-center items-center text-white font-normal xs:font-medium text-[11px] xs:text-[13px] sm:text-sm"
+              className={cn(
+                "w-full text-center py-1 text-white font-normal xs:font-medium text-[11px] xs:text-[13px] sm:text-sm"
+              )}
             >
               {text}
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <div className="w-[95%] mx-auto flex justify-between items-center py-1.5 xs:py-2 sm:py-4">
+      <div className="w-full shadow-md py-2 sm:py-4">
+      <div className="w-[95%] mx-auto flex justify-between items-center">
         <div className="w-[65px] xs:w-[80px] lg:w-[100px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -161,8 +165,12 @@ export default function Header() {
         </div>
 
         <div className="lg:hidden">
-          <HiMenuAlt3 className="text-3xl  xs:text-[32px]" onClick={() => setOpen(true)} />
+          <HiMenuAlt3
+            className="text-3xl  xs:text-[32px]"
+            onClick={() => setOpen(true)}
+          />
         </div>
+      </div>
       </div>
       <MobileNav open={open} setOpen={setOpen} />
     </header>
@@ -190,7 +198,10 @@ const MobileNav = ({
       </div>
       <div className="space-y-6 sm:space-y-4">
         {dropdown.map((item, index) => (
-          <div className="flex justify-between border-b-2 border-black py-1 md:py-3" key={index} >
+          <div
+            className="flex justify-between border-b-2 border-black py-1 md:py-3"
+            key={index}
+          >
             <p className="text-base sm:text-lg">{item.title}</p>
             <HiOutlineChevronDown className="text-lg" />
           </div>
