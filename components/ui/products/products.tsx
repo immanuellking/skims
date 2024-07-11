@@ -19,14 +19,6 @@ export default async function Products({
 }) {
   const { error, products } = await fetchProducts(type);
 
-  // if (error) {
-  //   return (
-  //     <section className="w-[95%] sm:w-[90%] mx-auto h-[350px]">
-  //       <p>{message}</p>
-  //     </section>
-  //   );
-  // }
-
   if (!error && products?.length) {
     return (
       <Carousel opts={{ align: "start" }} className={parentClass}>
