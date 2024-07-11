@@ -45,3 +45,17 @@ export const fetchReviews = async () => {
     };
   }
 };
+
+export const getProduct = async (type: string, slug: string) => {
+  const query = groq`*[_type == "${type}" && slug == "${slug}"]`;
+  // await new Promise((resolve) => setTimeout(resolve, 6000));
+
+  try {
+    const item: JustIn[] = await client.fetch(query);
+
+    return item[0];
+  } catch (error) {
+    console.log("Error", error);
+    throw new Error("Error fetching Product from DB");
+  }
+};
