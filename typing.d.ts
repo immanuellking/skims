@@ -27,3 +27,20 @@ interface ReviewPosts extends SanityBase {
   comment: string;
   image: Image;
 }
+
+type CartType = {
+  id: string;
+  _type: string;
+  tag: string;
+  name: string;
+  slug: string;
+  price: number;
+  image: Image;
+  quantity: number;
+};
+
+type StateType = {
+  cart: CartType[];
+};
+
+type ActionType = { type: "ADD_ITEM_TO_CART"; payload: CartType };
