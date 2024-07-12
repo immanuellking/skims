@@ -3,6 +3,7 @@ import { poppins } from "@/components/ui/font";
 import "./globals.css";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
+import { CartProvider } from "@/context/cartContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +20,11 @@ export default function RootLayout({
       <body
         className={`${poppins.className} antialiased overflow-x-hidden w-full`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Header />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );
