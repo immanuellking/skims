@@ -2,13 +2,26 @@
 import { JustIn } from "@/typing";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { FaRegHeart, FaHeart } from "react-icons/fa6";
+import { useCart } from "@/context/cartContext";
 
 export default function ProductDetails({ item }: { item: JustIn }) {
   const [current, setCurrent] = useState(0);
+  const { addItemToCart } = useCart();
+  const cartItem = {
+    id: item.id,
+    _type: item._type,
+    tag: item.tag,
+    name: item.name,
+    slug: item.slug,
+    price: item.price,
+    image: item.images[0],
+    quantity: 1,
+    total: item.price * 1,
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -49,7 +62,9 @@ export default function ProductDetails({ item }: { item: JustIn }) {
 
       <div className="w-full lg:w-[50%]">
         <div className="space-y-2">
-          <h4 className="text-gray-400 uppercase text-sm sm:text-base">{item.tag}</h4>
+          <h4 className="text-gray-400 uppercase text-sm sm:text-base">
+            {item.tag}
+          </h4>
           <div className="font-medium flex items-center gap-x-2">
             <h1 className="text-2xl sm:text-3xl uppercase">{item.name}</h1>
             <p className="text-[#B91C1C] text-xl sm:text-2xl">
@@ -103,7 +118,12 @@ export default function ProductDetails({ item }: { item: JustIn }) {
             </div>
           </div>
           <div className="mt-8">
-            <button className="bg-[#EEE4DA] text-[#62554A] font-semibold w-full py-3 hover:bg-[#62554A] hover:text-white transition-all duration-200 ease-in-out rounded-3xl">
+            <button
+              onClick={() => {
+                addItemToCart(cartItem);
+              }}
+              className="bg-[#EEE4DA] text-[#62554A] font-semibold w-full py-3 hover:bg-[#62554A] hover:text-white transition-all duration-200 ease-in-out rounded-3xl"
+            >
               ADD TO CART
             </button>
           </div>
