@@ -18,7 +18,7 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
-        className="w-full h-[85vh] hidden lg:block"
+        className="w-full h-0 lg:h-[85vh] hidden lg:block"
       >
         {hero.map(({ img, subText, title }, idx) => (
           <SwiperSlide key={idx} className={`w-full h-full relative`}>
@@ -52,7 +52,7 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
-        className="w-full h-[85vh] xs:h-[80vh] sm:h-[90vh] block lg:hidden"
+        className="w-full h-[90vh] block lg:h-0 lg:hidden"
       >
         {hero.map(({ subText, title, imgMobile }, idx) => (
           <SwiperSlide key={idx} className={`w-full h-full relative`}>
