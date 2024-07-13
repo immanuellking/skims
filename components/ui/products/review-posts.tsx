@@ -23,7 +23,7 @@ export default async function ReviewPosts() {
               return (
                 <CarouselItem
                   className="basis-full sm:basis-1/3 lg:basis-1/4"
-                  key={post.id}
+                  key={post._id}
                 >
                   <div className="w-full lg:w-[280px]">
                     <div className="relative w-full lg:w-[280px] h-[280px] lg:h-[300px]">
