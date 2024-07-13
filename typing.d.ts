@@ -2,7 +2,7 @@ import { Image } from "sanity";
 
 type SanityBase = {
   _createdAt: string;
-  id: string;
+  _id: string;
   _rev: string;
   _updatedAt: string;
 };
@@ -37,6 +37,7 @@ type CartType = {
   price: number;
   image: Image;
   quantity: number;
+  total: number;
 };
 
 type StateType = {
