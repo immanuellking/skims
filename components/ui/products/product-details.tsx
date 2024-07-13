@@ -12,7 +12,7 @@ export default function ProductDetails({ item }: { item: JustIn }) {
   const [current, setCurrent] = useState(0);
   const { addItemToCart } = useCart();
   const cartItem = {
-    id: item.id,
+    id: item._id,
     _type: item._type,
     tag: item.tag,
     name: item.name,
