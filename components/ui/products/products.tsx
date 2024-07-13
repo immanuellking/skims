@@ -25,7 +25,7 @@ export default async function Products({
         <CarouselContent>
           {products.map((product) => {
             return (
-              <CarouselItem className={cardClass} key={product.id}>
+              <CarouselItem className={cardClass} key={product._id}>
                 <ProductCard product={product} />
               </CarouselItem>
             );
