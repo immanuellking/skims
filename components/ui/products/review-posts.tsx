@@ -6,6 +6,7 @@ import {
 import { fetchReviews } from "@/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
+import Link from "next/link";
 import { HiStar } from "react-icons/hi";
 
 export default async function ReviewPosts() {
@@ -23,12 +24,12 @@ export default async function ReviewPosts() {
               return (
                 <CarouselItem
                   className="basis-full sm:basis-1/3 lg:basis-1/4"
-                  key={post._id}
+                  key={post.product._id}
                 >
                   <div className="w-full lg:w-[280px]">
                     <div className="relative w-full lg:w-[280px] h-[280px] lg:h-[300px]">
                       <Image
-                        src={urlForImage(post.image)}
+                        src={urlForImage(post.product.image)}
                         alt="review image"
                         fill
                       />
@@ -46,12 +47,12 @@ export default async function ReviewPosts() {
                       </div>
                       <p className="text-xs text-gray-700">{post.comment}</p>
                     </div>
-                    <a
-                      href="#"
+                    <Link
+                      href={`/store/${post.product._type}/${post.product.slug}`}
                       className="pt-4 font-medium uppercase underline text-sm"
                     >
                       Shop this style
-                    </a>
+                    </Link>
                   </div>
                 </CarouselItem>
               );
