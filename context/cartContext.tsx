@@ -19,8 +19,19 @@ const CartContext = createContext<{
   state: StateType;
   dispatch: React.Dispatch<ActionType>;
   addItemToCart: (item: CartType) => void;
-  getTotal: () => void
-}>({ state: initialState, dispatch: () => null, addItemToCart: () => {}, getTotal: () => {} });
+  getTotal: () => void;
+  increaseItem: (id: string) => void;
+  decreaseItem: (id: string) => void;
+  deleteItem: (id: string) => void;
+}>({
+  state: initialState,
+  dispatch: () => null,
+  addItemToCart: () => {},
+  getTotal: () => {},
+  increaseItem: () => {},
+  decreaseItem: () => {},
+  deleteItem: () => {},
+});
 
 function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState, (initial) => {
@@ -40,6 +51,18 @@ function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "GET_TOTAL" });
   }
 
+  function increaseItem(id: string) {
+    dispatch({ type: "INCREASE_ITEM", payload: id });
+  }
+
+  function decreaseItem(id: string) {
+    dispatch({ type: "DECREASE_ITEM", payload: id });
+  }
+
+  function deleteItem(id: string) {
+    dispatch({ type: "DELETE_ITEM", payload: id });
+  }
+
   useEffect(() => {
     // Save state to localStorage
     if (typeof window !== "undefined") {
@@ -49,7 +72,9 @@ function CartProvider({ children }: { children: ReactNode }) {
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ state, dispatch, addItemToCart, getTotal }}>
+    <CartContext.Provider
+      value={{ state, dispatch, addItemToCart, getTotal, increaseItem, decreaseItem, deleteItem }}
+    >
       {children}
     </CartContext.Provider>
   );
