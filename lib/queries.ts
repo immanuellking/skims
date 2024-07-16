@@ -29,7 +29,16 @@ export const fetchProducts = async (type: string) => {
 export const fetchReviews = async () => {
   noStore();
 
-  const query = groq`*[_type == "reviews"]`;
+  const query = groq`*[_type == "reviews"] {
+    customer_name,
+    comment,
+    product->{
+      _type,
+      slug,
+      _id,
+      "image": images[1]
+    },
+  }`;
 
   try {
     const posts: ReviewPosts[] = await client.fetch(query);
