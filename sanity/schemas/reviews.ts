@@ -11,24 +11,15 @@ export default defineType({
       type: "string",
     }),
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "string",
-    }),
-    defineField({
-      name: "type",
-      title: "Type",
-      type: "string",
-    }),
-    defineField({
       name: "comment",
       title: "Comment",
       type: "string",
     }),
     defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
+      name: "product",
+      title: "Product",
+      type: "reference",
+      to: [{ type: "justIn" }, { type: "trending" }],
     }),
   ],
 });
