@@ -19,13 +19,15 @@ interface JustIn extends SanityBase {
   images: Image[];
 }
 
-interface ReviewPosts extends SanityBase {
-  _type: "reviews";
+interface ReviewPosts {
   customer_name: string;
-  slug: string;
-  type: string;
   comment: string;
-  image: Image;
+  product: {
+    _type: string;
+    slug: string;
+    _id: string;
+    image: Image;
+  };
 }
 
 type CartType = {
@@ -47,4 +49,7 @@ type StateType = {
 
 type ActionType =
   | { type: "ADD_ITEM_TO_CART"; payload: CartType }
-  | { type: "GET_TOTAL" };
+  | { type: "GET_TOTAL" }
+  | { type: "INCREASE_ITEM"; payload: string }
+  | { type: "DECREASE_ITEM"; payload: string }
+  | { type: "DELETE_ITEM"; payload: string };
