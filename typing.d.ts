@@ -42,6 +42,9 @@ type CartType = {
 
 type StateType = {
   cart: CartType[];
+  total: number;
 };
 
-type ActionType = { type: "ADD_ITEM_TO_CART"; payload: CartType };
+type ActionType =
+  | { type: "ADD_ITEM_TO_CART"; payload: CartType }
+  | { type: "GET_TOTAL" };
