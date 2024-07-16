@@ -21,11 +21,19 @@ import {
 } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 import { texts, dropdown } from "@/lib/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useCart } from "@/context/cartContext";
 
 export default function Header() {
+  const { state } = useCart();
   const [open, setOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <header>
       <div className="w-full">
@@ -159,8 +167,13 @@ export default function Header() {
             <div>
               <HiOutlineHeart className="text-2xl  xs:text-[26px]" />
             </div>
-            <Link href="/cart">
+            <Link href="/cart" className="relative">
               <HiOutlineShoppingBag className="text-2xl  xs:text-[26px]" />
+              {isClient && state.cart.length > 1 && (
+                <div className="absolute -top-1 -right-2 h-5 w-5 flex items-center justify-center rounded-full text-sm font-medium text-white bg-[#62554A]">
+                  {state.cart.length}
+                </div>
+              )}
             </Link>
             <HiUserCircle className="text-[26px]  xs:text-[28px]" />
           </div>
