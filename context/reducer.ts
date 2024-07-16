@@ -1,4 +1,5 @@
 import { ActionType, StateType } from "@/typing";
+import { Car } from "lucide-react";
 
 export const reducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
@@ -16,6 +17,42 @@ export const reducer = (state: StateType, action: ActionType) => {
     case "GET_TOTAL":
       const total = state.cart.reduce((acc, item) => acc + item.total, 0);
       return { ...state, total };
+
+    case "INCREASE_ITEM":
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.payload
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+                total: item.price * (item.quantity + 1),
+              }
+            : item
+        ),
+      };
+
+    case "DECREASE_ITEM":
+      return {
+        ...state,
+        cart: state.cart
+          .map((item) =>
+            item.id === action.payload
+              ? {
+                  ...item,
+                  quantity: item.quantity - 1,
+                  total: item.price * (item.quantity - 1),
+                }
+              : item
+          )
+          .filter((item) => item.quantity !== 0),
+      };
+
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
 
     default:
       return state;
