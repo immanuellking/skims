@@ -3,6 +3,7 @@ import { useCart } from "@/context/cartContext";
 import { useEffect, useState } from "react";
 import CartItems from "./cart-items";
 import Checkout from "./checkout";
+import { CartPageSkeleton } from "@/components/skeletons";
 
 export default function Cart() {
   const { state, getTotal, increaseItem, decreaseItem, deleteItem } = useCart();
@@ -17,7 +18,7 @@ export default function Cart() {
 
   if (!isClient) {
     // Render a fallback or loading state during hydration
-    return <div>Loading...</div>;
+    return <CartPageSkeleton />;
   }
 
   return (
