@@ -3,7 +3,17 @@ import { CartType } from "@/typing";
 import Image from "next/image";
 import { RiDeleteBinLine } from "react-icons/ri";
 
-export default function CartItems({ cart }: { cart: CartType[] }) {
+export default function CartItems({
+  cart,
+  increaseItem,
+  decreaseItem,
+  deleteItem,
+}: {
+  cart: CartType[];
+  increaseItem: (id: string) => void;
+  decreaseItem: (id: string) => void;
+  deleteItem: (id: string) => void;
+}) {
   return (
     <section className="w-full sm:w-[55%] space-y-6 xs:space-y-8">
       {cart.map((item) => (
@@ -25,11 +35,14 @@ export default function CartItems({ cart }: { cart: CartType[] }) {
                 </h1>
               </div>
               <div className="flex w-[150px] xs:w-[180px] rounded border border-gray-300/50">
-                <button className="text-lg basis-1/3 hover:bg-[#F3EEE5] md:text-xl border-r border-gray-300/50 h-[35px] md:h-[50px] flex items-center justify-center">
+                <button
+                  className="text-lg basis-1/3 hover:bg-[#F3EEE5] md:text-xl border-r border-gray-300/50 h-[35px] md:h-[50px] flex items-center justify-center"
+                  onClick={() => decreaseItem(item.id)}
+                >
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 1024 1024"
                     height="1em"
                     width="1em"
@@ -39,13 +52,16 @@ export default function CartItems({ cart }: { cart: CartType[] }) {
                   </svg>
                 </button>
                 <button className="text-lg basis-1/3 md:text-xl h-[35px] md:h-[50px] flex items-center justify-center">
-                  1
+                  {item.quantity}
                 </button>
-                <button className="text-lg basis-1/3 hover:bg-[#F3EEE5] md:text-xl border-l border-gray-300/50 h-[35px] md:h-[50px] flex items-center justify-center">
+                <button
+                  className="text-lg basis-1/3 hover:bg-[#F3EEE5] md:text-xl border-l border-gray-300/50 h-[35px] md:h-[50px] flex items-center justify-center"
+                  onClick={() => increaseItem(item.id)}
+                >
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 512 512"
                     height="1em"
                     width="1em"
@@ -53,9 +69,9 @@ export default function CartItems({ cart }: { cart: CartType[] }) {
                   >
                     <path
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="32"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="32"
                       d="M256 112v288m144-144H112"
                     ></path>
                   </svg>
@@ -72,11 +88,17 @@ export default function CartItems({ cart }: { cart: CartType[] }) {
                 &#8358;{item.total.toLocaleString()}
               </p>
             </div>
-            <div className="bg-red-600 h-[40px] w-[40px] flex justify-center items-center rounded cursor-pointer">
+            <div
+              className="bg-red-600 h-[40px] w-[40px] flex justify-center items-center rounded cursor-pointer"
+              onClick={() => deleteItem(item.id)}
+            >
               <RiDeleteBinLine className="text-xl text-white" />
             </div>
           </div>
-          <div className="absolute bottom-1 right-1 bg-red-600 h-[35px] w-[35px] xs:h-[40px] xs:w-[40px] flex justify-center items-center sm:hidden rounded cursor-pointer">
+          <div
+            className="absolute bottom-1 right-1 bg-red-600 h-[35px] w-[35px] xs:h-[40px] xs:w-[40px] flex justify-center items-center sm:hidden rounded cursor-pointer"
+            onClick={() => deleteItem(item.id)}
+          >
             <RiDeleteBinLine className="text-xl text-white" />
           </div>
         </div>
