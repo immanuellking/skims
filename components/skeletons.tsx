@@ -132,3 +132,74 @@ export const ProductDetailsPageSkeleton = () => {
     </main>
   );
 };
+
+export const CartPageSkeleton = () => {
+  return (
+    <div className="flex flex-col sm:flex-row justify-between">
+      <section
+        className={`${shimmer} w-full sm:w-[55%] space-y-6 xs:space-y-8`}
+      >
+        <div className="relative flex w-auto p-4 justify-between shadow">
+          <div className="flex gap-x-2 sm:gap-x-4">
+            <div className="relative w-[8rem] h-[8rem]  xs:w-[9rem] xs:h-[9rem] bg-[#EEE4DA]"></div>
+            <div className="flex flex-col gap-y-4 sm:gap-y-6">
+              <div className="space-y-2">
+                <h4 className="h-4 sm:h-5 w-32 bg-[#EEE4DA]"></h4>
+                <h1 className="h-6 w-40 xs:w-48 bg-[#EEE4DA]"></h1>
+              </div>
+              <div className="h-9 sm:h-12 w-[150px] xs:w-[180px] rounded bg-[#EEE4DA]"></div>
+            </div>
+          </div>
+          <div className="hidden sm:flex flex-col justify-between items-end">
+            <div className="space-y-2 flex flex-col items-end">
+              <div className="h-4 w-16 bg-[#EEE4DA]"></div>
+              <div className="h-7 w-28 bg-[#EEE4DA]"></div>
+            </div>
+            <div className="bg-[#EEE4DA]-600 h-[40px] w-[40px] hidden sm:block"></div>
+          </div>
+          <div className="absolute bottom-1 right-1 bg-[#EEE4DA] h-[35px] w-[35px] xs:h-[40px] xs:w-[40px] rounded block sm:hidden"></div>
+        </div>
+        <div className="relative flex w-auto p-4 justify-between shadow">
+          <div className="flex gap-x-2 sm:gap-x-4">
+            <div className="relative w-[8rem] h-[8rem]  xs:w-[9rem] xs:h-[9rem] bg-[#EEE4DA]"></div>
+            <div className="flex flex-col gap-y-4 sm:gap-y-6">
+              <div className="space-y-2">
+                <h4 className="h-4 sm:h-5 w-32 bg-[#EEE4DA]"></h4>
+                <h1 className="h-6 w-40 xs:w-48 bg-[#EEE4DA]"></h1>
+              </div>
+              <div className="h-9 sm:h-12 w-[150px] xs:w-[180px] rounded bg-[#EEE4DA]"></div>
+            </div>
+          </div>
+          <div className="hidden sm:flex flex-col justify-between items-end">
+            <div className="space-y-2 flex flex-col items-end">
+              <div className="h-4 w-16 bg-[#EEE4DA]"></div>
+              <div className="h-7 w-28 bg-[#EEE4DA]"></div>
+            </div>
+            <div className="bg-[#EEE4DA]-600 h-[40px] w-[40px] hidden sm:block"></div>
+          </div>
+          <div className="absolute bottom-1 right-1 bg-[#EEE4DA] h-[35px] w-[35px] xs:h-[40px] xs:w-[40px] rounded block sm:hidden"></div>
+        </div>
+      </section>
+
+      <section
+        className={` w-full sm:w-[43%] lg:w-[40%] h-fit shadow px-4 pb-4 rounded`}
+      >
+        <div className="border-b border-gray-500/40 pt-4 pb-2">
+          <div className="h-9 sm:h-11 w-48 bg-[#EEE4DA]"></div>
+        </div>
+        <div className="py-4 space-y-2">
+          <div className="h-4 sm:h-6 w-full bg-[#EEE4DA]"></div>
+          <div className="h-4 sm:h-6 w-full bg-[#EEE4DA]"></div>
+          <div className="h-4 sm:h-6 w-full bg-[#EEE4DA]"></div>
+          <div className="h-4 sm:h-6 w-full bg-[#EEE4DA]"></div>
+        </div>
+
+        <div className="border-y border-gray-500/40 flex justify-between items-center py-6">
+          <div className="h-8 sm:h-10 w-full bg-[#EEE4DA]"></div>
+        </div>
+
+        <div className=" h-10 sm:h-12 w-full bg-[#EEE4DA]"></div>
+      </section>
+    </div>
+  );
+};
