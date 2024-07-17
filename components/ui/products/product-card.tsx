@@ -8,7 +8,6 @@ export default function ProductCard({ product }: { product: JustIn }) {
   return (
     <Link
       href={`/store/${product._type}/${product.slug}`}
-
       className="relative w-full lg:w-[300px] space-y-2 cursor-pointer"
     >
       <div className="relative w-full h-[220px] lg:w-[300px] lg:h-[300px]">
