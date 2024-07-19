@@ -1,12 +1,14 @@
 import { CartType } from "@/typing";
+import { useRouter } from "next/navigation";
 
-export default function Checkout({
+export default function CartReceipt({
   cart,
   total,
 }: {
   cart: CartType[];
   total: number;
 }) {
+  const router = useRouter();
   return (
     <section className="w-full sm:w-[43%] lg:w-[40%] h-fit shadow px-4 pb-4 rounded">
       <div className="border-b border-gray-500/40 pt-4 pb-2">
@@ -35,7 +37,10 @@ export default function Checkout({
         </p>
       </div>
 
-      <button className="h-12 w-full bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center gap-x-2">
+      <button
+        className="h-12 w-full bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center gap-x-2"
+        onClick={() => router.push("/checkout")}
+      >
         <svg
           stroke="currentColor"
           fill="currentColor"
