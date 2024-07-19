@@ -2,7 +2,7 @@
 import { useCart } from "@/context/cartContext";
 import { useEffect, useState } from "react";
 import CartItems from "./cart-items";
-import Checkout from "./checkout";
+import CartReceipt from "./cart-receipt";
 import { CartPageSkeleton } from "@/components/skeletons";
 
 export default function Cart() {
@@ -29,7 +29,7 @@ export default function Cart() {
         decreaseItem={decreaseItem}
         deleteItem={deleteItem}
       />
-      <Checkout cart={state.cart} total={state.total} />
+      <CartReceipt cart={state.cart} total={state.total} />
     </div>
   );
 }
