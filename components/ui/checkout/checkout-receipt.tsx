@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function Receipt({ cart, total }: { cart: CartType[]; total: number }) {
     return (
-      <section className="w-[50%]">
+      <section className="w-full lg:w-[50%]">
         <div className="space-y-4 py-2">
           {cart.map((item) => (
             <div key={item.id} className="flex">
@@ -12,7 +12,7 @@ export function Receipt({ cart, total }: { cart: CartType[]; total: number }) {
                 <Image src={urlForImage(item.image)} alt="cart-item-image" fill />
               </div>
               <div className="flex flex-col justify-between">
-                <h2 className="capitalize font-medium">
+                <h2 className="capitalize font-medium line-clamp-1">
                   {item.tag} {item.name}
                 </h2>
                 <p className="text-sm text-gray-700">
