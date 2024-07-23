@@ -42,9 +42,21 @@ type CartType = {
   total: number;
 };
 
+type AddressType = {
+  city: string;
+  houseNo: string;
+  name: string;
+  phoneNumber: string;
+  postalCode: string;
+  state: string;
+  street: string;
+};
+
 type StateType = {
   cart: CartType[];
   total: number;
+  addresses: AddressType[];
+  isDialogOpen;
 };
 
 type ActionType =
@@ -52,4 +64,7 @@ type ActionType =
   | { type: "GET_TOTAL" }
   | { type: "INCREASE_ITEM"; payload: string }
   | { type: "DECREASE_ITEM"; payload: string }
-  | { type: "DELETE_ITEM"; payload: string };
+  | { type: "DELETE_ITEM"; payload: string }
+  | { type: "ADD_ADDRESS"; payload: AddressType }
+  | { type: "OPEN_DIALOG" }
+  | { type: "CLOSE_DIALOG" };
