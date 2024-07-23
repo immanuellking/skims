@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/cartContext";
+import { getUID } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -55,9 +56,9 @@ export function AddressForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    addAddress(values);
+    addAddress({ id: getUID(), ...values });
     form.reset();
-    closeDialog()
+    closeDialog();
   }
 
   return (
