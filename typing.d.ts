@@ -43,6 +43,7 @@ type CartType = {
 };
 
 type AddressType = {
+  id: string;
   city: string;
   houseNo: string;
   name: string;
@@ -66,5 +67,6 @@ type ActionType =
   | { type: "DECREASE_ITEM"; payload: string }
   | { type: "DELETE_ITEM"; payload: string }
   | { type: "ADD_ADDRESS"; payload: AddressType }
+  | { type: "DELETE_ADDRESS"; payload: id }
   | { type: "OPEN_DIALOG" }
   | { type: "CLOSE_DIALOG" };
