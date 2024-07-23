@@ -1,5 +1,4 @@
 import { ActionType, StateType } from "@/typing";
-import { Car } from "lucide-react";
 
 export const reducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
@@ -54,7 +53,24 @@ export const reducer = (state: StateType, action: ActionType) => {
         cart: state.cart.filter((item) => item.id !== action.payload),
       };
 
-    default:
+    case "ADD_ADDRESS":
+      return {
+        ...state,
+        addresses: [...state.addresses, action.payload],
+      };
+
+    case "OPEN_DIALOG":
+      return {
+        ...state,
+        isDialogOpen: true,
+      };
+    case "CLOSE_DIALOG":
+      return {
+        ...state,
+        isDialogOpen: false,
+      };
+
+        default:
       return state;
   }
 };
