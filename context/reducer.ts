@@ -59,6 +59,14 @@ export const reducer = (state: StateType, action: ActionType) => {
         addresses: [...state.addresses, action.payload],
       };
 
+    case "DELETE_ADDRESS":
+      return {
+        ...state,
+        addresses: state.addresses.filter(
+          (address) => address.id !== action.payload
+        ),
+      };
+
     case "OPEN_DIALOG":
       return {
         ...state,
@@ -70,7 +78,7 @@ export const reducer = (state: StateType, action: ActionType) => {
         isDialogOpen: false,
       };
 
-        default:
+    default:
       return state;
   }
 };
