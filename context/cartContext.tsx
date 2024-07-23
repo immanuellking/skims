@@ -26,6 +26,7 @@ const CartContext = createContext<{
   decreaseItem: (id: string) => void;
   deleteItem: (id: string) => void;
   addAddress: (value: AddressType) => void;
+  deleteAddress: (id: string) => void;
   openDialog: () => void;
   closeDialog: () => void;
 }>({
@@ -37,6 +38,7 @@ const CartContext = createContext<{
   decreaseItem: () => {},
   deleteItem: () => {},
   addAddress: () => {},
+  deleteAddress: () => {},
   openDialog: () => {},
   closeDialog: () => {},
 });
@@ -85,9 +87,14 @@ function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "ADD_ADDRESS", payload: value });
   }
 
+  function deleteAddress(id: string) {
+    dispatch({ type: "DELETE_ADDRESS", payload: id });
+  }
+
   function openDialog() {
     dispatch({ type: "OPEN_DIALOG" });
   }
+
   function closeDialog() {
     dispatch({ type: "CLOSE_DIALOG" });
   }
@@ -119,6 +126,7 @@ function CartProvider({ children }: { children: ReactNode }) {
         decreaseItem,
         deleteItem,
         addAddress,
+        deleteAddress,
         openDialog,
         closeDialog,
       }}
