@@ -1,39 +1,19 @@
 "use client";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { AddressForm } from "./address-form";
 import { useCart } from "@/context/cartContext";
-import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
-import { MdOutlineCheckCircleOutline } from "react-icons/md";
-import { cn } from "@/lib/utils";
 import { useState } from "react";
+import ChooseAddress from "./choose-address";
+import SelectedAddress from "./selected-address";
+import { AddressDialog } from "./address-dialog";
 
 export function Address() {
   const [step, setStep] = useState(1);
 
-  const {
-    state,
-    openDialog,
-    deleteAddress,
-    setDialogStatus,
-    setSelectedAddress,
-    clearSelectedAddress,
-  } = useCart();
+  const { state, openDialog, setDialogStatus, clearSelectedAddress } =
+    useCart();
 
   function addAddress() {
     clearSelectedAddress();
     setDialogStatus("new");
-    openDialog();
-  }
-
-  function editAddress(id: string) {
-    setSelectedAddress(id);
-    setDialogStatus("edit");
     openDialog();
   }
 
@@ -52,89 +32,20 @@ export function Address() {
 
       {state.addresses.length >= 1 ? (
         <div className="space-y-6 sm:space-y-8">
-          {step === 1 && (
-            <div className="space-y-4">
-              {state.addresses.map((add) => (
-                <div
-                  className={cn("shadow-sm p-4 relative", {
-                    "bg-[#F3EEE5]":
-                      state.selectedAddress?.id === add.id &&
-                      !state.dialog.isOpen,
-                    "hover:bg-[#f7f5f1]": state.selectedAddress?.id !== add.id,
-                  })}
-                  key={add.id}
-                  onClick={() => setSelectedAddress(add.id)}
-                >
-                  <h3 className="text-xl font-semibold capitalize text-[#62554a]">
-                    {add.name}
-                  </h3>
-                  <p className="text-sm text-[#62554a]">
-                    {add.houseNo}, {add.street}, {add.city}, {add.state},{" "}
-                    {add.postalCode}
-                  </p>
-                  <p className="text-sm text-[#62554a]">{add.phoneNumber}</p>
-                  <div className="mt-2 space-x-4">
-                    <button onClick={() => editAddress(add.id)}>
-                      <HiOutlinePencilSquare className="text-lg text-green-400" />
-                    </button>
-                    <button onClick={() => deleteAddress(add.id)}>
-                      <HiOutlineTrash className="text-xl text-red-500" />
-                    </button>
-                  </div>
-                  <div
-                    className={cn("absolute top-4 right-4 text-lg hidden", {
-                      block:
-                        state.selectedAddress?.id === add.id &&
-                        !state.dialog.isOpen,
-                    })}
-                  >
-                    <MdOutlineCheckCircleOutline />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {step === 1 && <ChooseAddress />}
 
-          {step === 2 && (
-            <div className="text-[#62554a]">
-              <p className="text-sm">
-                Name:{" "}
-                <span className="text-base capitalize font-medium">
-                  {state.selectedAddress?.name}
-                </span>
-              </p>
-              <p>
-                Address:{" "}
-                <span className="text-base capitalize font-medium">
-                  {state.selectedAddress?.houseNo +
-                    ", " +
-                    state.selectedAddress?.street +
-                    ", " +
-                    state.selectedAddress?.city +
-                    ", " +
-                    state.selectedAddress?.state}
-                  .
-                </span>
-              </p>
-              <p>
-                Postal code:{" "}
-                <span className="text-base capitalize font-medium">
-                  {state.selectedAddress?.postalCode}
-                </span>
-              </p>
-              <p>
-                Phone:{" "}
-                <span className="text-base capitalize font-medium">
-                  {state.selectedAddress?.phoneNumber}
-                </span>
-              </p>
-            </div>
-          )}
+          {step === 2 && <SelectedAddress />}
 
           <div className="w-full flex justify-end">
             <button
               className="h-10 w-40 bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center"
-              onClick={() => setStep((prev) => prev + 1)}
+              onClick={() => {
+                if (!state.selectedAddress) {
+                  alert("Choose an address");
+                  return;
+                }
+                setStep((prev) => prev + 1);
+              }}
             >
               Proceed
             </button>
@@ -147,36 +58,5 @@ export function Address() {
       )}
       <AddressDialog />
     </section>
-  );
-}
-
-function AddressDialog() {
-  const { closeDialog, state } = useCart();
-  return (
-    <Dialog
-      onOpenChange={closeDialog}
-      open={state.dialog.isOpen}
-      modal
-      defaultOpen={state.dialog.isOpen}
-    >
-      <DialogContent className="bg-white lg:w-[40rem]">
-        <DialogHeader>
-          <DialogTitle className="mb-4">
-            <div>
-              <div className="text-[#62554a] text-xl ">
-                {state.dialog.status === "new" ? "Add new" : "Edit"} address
-              </div>
-              <div className="text-sm font-light text-[#ab8f80]">
-                Fill in the form below to{" "}
-                {state.dialog.status === "new" ? "add new" : "edit"} address.
-              </div>
-            </div>
-          </DialogTitle>
-          <DialogDescription>
-            <AddressForm />
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
   );
 }
