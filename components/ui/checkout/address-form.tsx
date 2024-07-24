@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/cartContext";
 import { getUID } from "@/lib/utils";
+import { useEffect, useRef } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -40,11 +41,11 @@ const formSchema = z.object({
 });
 
 export function AddressForm() {
-  const { addAddress, closeDialog } = useCart();
+  const { addAddress, closeDialog, state, editAddress } = useCart();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: state.selectedAddress || {
       name: "",
       houseNo: "",
       street: "",
@@ -55,8 +56,26 @@ export function AddressForm() {
     },
   });
 
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (state.dialog.status === "edit" && nameInputRef.current) {
+      nameInputRef.current.focus();
+      nameInputRef.current.setSelectionRange(
+        nameInputRef.current.value.length,
+        nameInputRef.current.value.length
+      );
+    }
+  }, [state.dialog.status]);
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    addAddress({ id: getUID(), ...values });
+    if (state.dialog.status === "new") {
+      addAddress({ id: getUID(), ...values });
+    } else {
+      if (state.selectedAddress) {
+        editAddress({ id: state.selectedAddress.id, ...values });
+      }
+    }
     form.reset();
     closeDialog();
   }
@@ -76,6 +95,7 @@ export function AddressForm() {
                     placeholder="Name"
                     className="focus-visible:ring-[#62554a]"
                     {...field}
+                    ref={nameInputRef}
                   />
                 </FormControl>
                 <FormMessage />
