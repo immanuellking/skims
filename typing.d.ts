@@ -53,11 +53,17 @@ type AddressType = {
   street: string;
 };
 
+type DialogType = {
+  isOpen: boolean;
+  status: "edit" | "new";
+};
+
 type StateType = {
   cart: CartType[];
   total: number;
   addresses: AddressType[];
-  isDialogOpen;
+  dialog: DialogType;
+  selectedAddress?: AddressType;
 };
 
 type ActionType =
@@ -67,6 +73,10 @@ type ActionType =
   | { type: "DECREASE_ITEM"; payload: string }
   | { type: "DELETE_ITEM"; payload: string }
   | { type: "ADD_ADDRESS"; payload: AddressType }
-  | { type: "DELETE_ADDRESS"; payload: id }
+  | { type: "EDIT_ADDRESS"; payload: AddressType }
+  | { type: "DELETE_ADDRESS"; payload: string }
+  | { type: "SET_SELECTED_ADDRESS"; payload: string }
+  | { type: "CLEAR_SELECTED_ADDRESS" }
   | { type: "OPEN_DIALOG" }
-  | { type: "CLOSE_DIALOG" };
+  | { type: "CLOSE_DIALOG" }
+  | { type: "SET_DIALOG_STATUS"; payload: "edit" | "new" };
