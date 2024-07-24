@@ -59,6 +59,14 @@ export const reducer = (state: StateType, action: ActionType) => {
         addresses: [...state.addresses, action.payload],
       };
 
+    case "EDIT_ADDRESS":
+      return {
+        ...state,
+        addresses: state.addresses.map((address) =>
+          address.id === action.payload.id ? action.payload : address
+        ),
+      };
+
     case "DELETE_ADDRESS":
       return {
         ...state,
@@ -67,15 +75,37 @@ export const reducer = (state: StateType, action: ActionType) => {
         ),
       };
 
+    case "SET_SELECTED_ADDRESS":
+      return {
+        ...state,
+        selectedAddress: state.addresses.find(
+          (address) => address.id === action.payload
+        ),
+      };
+
+    case "CLEAR_SELECTED_ADDRESS":
+      return {
+        ...state,
+        selectedAddress: undefined,
+      };
+
     case "OPEN_DIALOG":
       return {
         ...state,
-        isDialogOpen: true,
+        dialog: { ...state.dialog, isOpen: true },
       };
+
     case "CLOSE_DIALOG":
       return {
         ...state,
-        isDialogOpen: false,
+        dialog: { ...state.dialog, isOpen: false },
+        selectedAddress: undefined,
+      };
+
+    case "SET_DIALOG_STATUS":
+      return {
+        ...state,
+        dialog: { ...state.dialog, status: action.payload },
       };
 
     default:
