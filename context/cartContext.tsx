@@ -14,7 +14,11 @@ const initialState: StateType = {
   cart: [],
   total: 0,
   addresses: [],
-  isDialogOpen: false,
+  dialog: {
+    isOpen: false,
+    status: "new",
+  },
+  selectedAddress: undefined,
 };
 
 const CartContext = createContext<{
@@ -26,9 +30,13 @@ const CartContext = createContext<{
   decreaseItem: (id: string) => void;
   deleteItem: (id: string) => void;
   addAddress: (value: AddressType) => void;
+  editAddress: (value: AddressType) => void;
   deleteAddress: (id: string) => void;
+  setSelectedAddress: (id: string) => void;
+  clearSelectedAddress: () => void;
   openDialog: () => void;
   closeDialog: () => void;
+  setDialogStatus: (status: "edit" | "new") => void;
 }>({
   state: initialState,
   dispatch: () => null,
@@ -38,9 +46,13 @@ const CartContext = createContext<{
   decreaseItem: () => {},
   deleteItem: () => {},
   addAddress: () => {},
+  editAddress: () => {},
   deleteAddress: () => {},
   openDialog: () => {},
   closeDialog: () => {},
+  setDialogStatus: () => {},
+  setSelectedAddress: () => {},
+  clearSelectedAddress: () => {},
 });
 
 function CartProvider({ children }: { children: ReactNode }) {
@@ -51,12 +63,11 @@ function CartProvider({ children }: { children: ReactNode }) {
       const addressesLocalData = JSON.parse(
         localStorage.getItem("addresses") || "[]"
       );
-      return localData
+      return localData || addressesLocalData
         ? {
+            ...initial,
             cart: localData,
-            total: 0,
             addresses: addressesLocalData,
-            isDialogOpen: false,
           }
         : initial;
     }
@@ -87,8 +98,20 @@ function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "ADD_ADDRESS", payload: value });
   }
 
+  function editAddress(value: AddressType) {
+    dispatch({ type: "EDIT_ADDRESS", payload: value });
+  }
+
   function deleteAddress(id: string) {
     dispatch({ type: "DELETE_ADDRESS", payload: id });
+  }
+
+  function setSelectedAddress(id: string) {
+    dispatch({ type: "SET_SELECTED_ADDRESS", payload: id });
+  }
+
+  function clearSelectedAddress() {
+    dispatch({ type: "CLEAR_SELECTED_ADDRESS" });
   }
 
   function openDialog() {
@@ -97,6 +120,10 @@ function CartProvider({ children }: { children: ReactNode }) {
 
   function closeDialog() {
     dispatch({ type: "CLOSE_DIALOG" });
+  }
+
+  function setDialogStatus(status: "edit" | "new") {
+    dispatch({ type: "SET_DIALOG_STATUS", payload: status });
   }
 
   useEffect(() => {
@@ -126,9 +153,13 @@ function CartProvider({ children }: { children: ReactNode }) {
         decreaseItem,
         deleteItem,
         addAddress,
+        editAddress,
         deleteAddress,
         openDialog,
         closeDialog,
+        setDialogStatus,
+        setSelectedAddress,
+        clearSelectedAddress,
       }}
     >
       {children}
