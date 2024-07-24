@@ -11,8 +11,10 @@ import { useCart } from "@/context/cartContext";
 import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export function Address() {
+  const [step, setStep] = useState(1);
 
   const {
     state,
@@ -38,52 +40,102 @@ export function Address() {
   return (
     <section className="w-full lg:w-[50%] space-y-2 lg:space-y-4">
       <div className="flex justify-between border-b border-gray-400 py-2 ">
-        <h4 className="text-[#62554a] font-medium">Choose Address</h4>
-        <p className="text-green-500 cursor-pointer" onClick={addAddress}>
-          Add Address
-        </p>
+        <h4 className="text-[#62554a] font-medium">
+          {step === 1 ? "Choose Address" : "Confirm Address "}
+        </h4>
+        {step === 1 && (
+          <p className="text-green-500 cursor-pointer" onClick={addAddress}>
+            Add Address
+          </p>
+        )}
       </div>
 
       {state.addresses.length >= 1 ? (
         <div className="space-y-6 sm:space-y-8">
-          <div className="space-y-4">
-            {state.addresses.map((add) => (
-              <div
-                className={cn("shadow-sm p-4 relative", {
-                  "bg-[#F3EEE5]":
-                    state.selectedAddress?.id === add.id &&
-                    !state.dialog.isOpen,
-                })}
-                key={add.id}
-                onClick={() => setSelectedAddress(add.id)}
-              >
-                <h3 className="text-xl font-semibold capitalize text-[#62554a]">
-                  {add.name}
-                </h3>
-                <p className="text-sm text-[#62554a]">
-                  {add.houseNo}, {add.street}, {add.city}, {add.state},{" "}
-                  {add.postalCode}
-                </p>
-                <p className="text-sm text-[#62554a]">{add.phoneNumber}</p>
-                <div className="mt-2 space-x-4">
-                  <button onClick={() => editAddress(add.id)}>
-                    <HiOutlinePencilSquare className="text-lg text-green-400" />
-                  </button>
-                  <button onClick={() => deleteAddress(add.id)}>
-                    <HiOutlineTrash className="text-xl text-red-500" />
-                  </button>
+          {step === 1 && (
+            <div className="space-y-4">
+              {state.addresses.map((add) => (
+                <div
+                  className={cn("shadow-sm p-4 relative", {
+                    "bg-[#F3EEE5]":
+                      state.selectedAddress?.id === add.id &&
+                      !state.dialog.isOpen,
+                    "hover:bg-[#f7f5f1]": state.selectedAddress?.id !== add.id,
+                  })}
+                  key={add.id}
+                  onClick={() => setSelectedAddress(add.id)}
+                >
+                  <h3 className="text-xl font-semibold capitalize text-[#62554a]">
+                    {add.name}
+                  </h3>
+                  <p className="text-sm text-[#62554a]">
+                    {add.houseNo}, {add.street}, {add.city}, {add.state},{" "}
+                    {add.postalCode}
+                  </p>
+                  <p className="text-sm text-[#62554a]">{add.phoneNumber}</p>
+                  <div className="mt-2 space-x-4">
+                    <button onClick={() => editAddress(add.id)}>
+                      <HiOutlinePencilSquare className="text-lg text-green-400" />
+                    </button>
+                    <button onClick={() => deleteAddress(add.id)}>
+                      <HiOutlineTrash className="text-xl text-red-500" />
+                    </button>
+                  </div>
+                  <div
+                    className={cn("absolute top-4 right-4 text-lg hidden", {
+                      block:
+                        state.selectedAddress?.id === add.id &&
+                        !state.dialog.isOpen,
+                    })}
+                  >
+                    <MdOutlineCheckCircleOutline />
+                  </div>
                 </div>
-                <div className={cn("absolute top-4 right-4 text-lg hidden", {
-                  "block": state.selectedAddress?.id === add.id &&
-                  !state.dialog.isOpen,
-                })}>
-                  <MdOutlineCheckCircleOutline />
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="text-[#62554a]">
+              <p className="text-sm">
+                Name:{" "}
+                <span className="text-base capitalize font-medium">
+                  {state.selectedAddress?.name}
+                </span>
+              </p>
+              <p>
+                Address:{" "}
+                <span className="text-base capitalize font-medium">
+                  {state.selectedAddress?.houseNo +
+                    ", " +
+                    state.selectedAddress?.street +
+                    ", " +
+                    state.selectedAddress?.city +
+                    ", " +
+                    state.selectedAddress?.state}
+                  .
+                </span>
+              </p>
+              <p>
+                Postal code:{" "}
+                <span className="text-base capitalize font-medium">
+                  {state.selectedAddress?.postalCode}
+                </span>
+              </p>
+              <p>
+                Phone:{" "}
+                <span className="text-base capitalize font-medium">
+                  {state.selectedAddress?.phoneNumber}
+                </span>
+              </p>
+            </div>
+          )}
+
           <div className="w-full flex justify-end">
-            <button className="h-10 w-40 bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center">
+            <button
+              className="h-10 w-40 bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center"
+              onClick={() => setStep((prev) => prev + 1)}
+            >
               Proceed
             </button>
           </div>
