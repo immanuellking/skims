@@ -3,6 +3,7 @@ import { useCart } from "@/context/cartContext";
 import { useEffect, useState } from "react";
 import { Receipt } from "./checkout-receipt";
 import { Address } from "./address";
+import { CheckoutPageSkeleton } from "@/components/skeletons";
 
 export default function Checkout() {
   const { state, getTotal } = useCart();
@@ -14,7 +15,7 @@ export default function Checkout() {
   }, []);
 
   if (!isClient) {
-    return <div>Loading ...</div>;
+    return <CheckoutPageSkeleton />;
   }
 
   return (
@@ -24,6 +25,3 @@ export default function Checkout() {
     </div>
   );
 }
-
-
-
