@@ -38,7 +38,7 @@ export default function CartReceipt({
       </div>
 
       <button
-        className="h-12 w-full bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center gap-x-2"
+        className="h-12 w-full bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-sm mt-5 transition-all duration-200 flex items-center justify-center gap-x-2"
         onClick={() => router.push("/checkout")}
       >
         <svg
