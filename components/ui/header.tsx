@@ -24,6 +24,7 @@ import { texts, dropdown } from "@/lib/data";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/cartContext";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const { state } = useCart();
@@ -164,9 +165,9 @@ export default function Header() {
             ))}
           </ul>
           <div className="flex gap-3 lg:gap-6">
-            <div>
+            {/* <div>
               <HiOutlineHeart className="text-2xl  xs:text-[26px]" />
-            </div>
+            </div> */}
             <Link href="/cart" className="relative">
               <HiOutlineShoppingBag className="text-2xl  xs:text-[26px]" />
               {isClient && state.cart.length >= 1 && (
@@ -175,7 +176,18 @@ export default function Header() {
                 </div>
               )}
             </Link>
-            <HiUserCircle className="text-[26px]  xs:text-[28px]" />
+            <SignedIn>
+              {/* Mount the UserButton component */}
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton>
+                <button className="flex items-center text-sm">
+                  <HiUserCircle className="text-[26px]  xs:text-[28px]" /> Sign
+                  in
+                </button>
+              </SignInButton>
+            </SignedOut>
           </div>
 
           <div className="lg:hidden">
