@@ -19,13 +19,20 @@ export function Address() {
 
   return (
     <section className="w-full lg:w-[50%] space-y-2 lg:space-y-4">
-      <div className="flex justify-between border-b border-gray-400 py-2 ">
+      <div className="flex justify-between items-end border-b border-gray-400 py-2 ">
         <h4 className="text-[#62554a] font-medium">
           {step === 1 ? "Choose Address" : "Confirm Address "}
         </h4>
-        {step === 1 && (
+        {step === 1 ? (
           <p className="text-green-500 cursor-pointer" onClick={addAddress}>
             Add Address
+          </p>
+        ) : (
+          <p
+            className="text-[#62554a] font-medium cursor-pointer text-sm"
+            onClick={() => setStep((prev) => prev - 1)}
+          >
+            go back
           </p>
         )}
       </div>
@@ -47,7 +54,7 @@ export function Address() {
                 setStep((prev) => prev + 1);
               }}
             >
-              Proceed
+              {step === 1 ? "Proceed" : "Confirm"}
             </button>
           </div>
         </div>
