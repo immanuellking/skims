@@ -19,7 +19,10 @@ export function Address() {
   }
 
   useEffect(() => {
-    window.scroll(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [step]);
 
   return (
