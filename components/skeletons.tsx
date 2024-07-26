@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 const shimmer =
-"before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
+  "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
 
 const ProductCardSkeletons = ({ className }: { className?: string }) => {
   return (
@@ -210,35 +210,35 @@ export const CheckoutPageSkeleton = () => {
       <section className="w-full lg:w-[50%]">
         <div className="space-y-4 py-2">
           <div className="relative flex gap-x-3">
-            <div className="w-[5rem] bg-[#EEE4DA]"></div>
+            <div className="w-[4rem] sm:w-[5rem] bg-[#EEE4DA]"></div>
             <div className="flex flex-col justify-between gap-y-1.5">
-              <div className="h-5 w-64 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-32 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-24 bg-[#EEE4DA]"></div>
+              <div className="h-5 w-52 sm:w-64 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-28 sm:w-32 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-20 sm:w-24 bg-[#EEE4DA]"></div>
             </div>
           </div>
-          <div className="flex gap-x-3">
-            <div className="w-[5rem] bg-[#EEE4DA]"></div>
+          <div className="relative flex gap-x-3">
+            <div className="w-[4rem] sm:w-[5rem] bg-[#EEE4DA]"></div>
             <div className="flex flex-col justify-between gap-y-1.5">
-              <div className="h-5 w-64 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-32 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-24 bg-[#EEE4DA]"></div>
+              <div className="h-5 w-52 sm:w-64 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-28 sm:w-32 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-20 sm:w-24 bg-[#EEE4DA]"></div>
             </div>
           </div>
-          <div className="flex gap-x-3">
-            <div className="w-[5rem] bg-[#EEE4DA]"></div>
+          <div className="relative flex gap-x-3">
+            <div className="w-[4rem] sm:w-[5rem] bg-[#EEE4DA]"></div>
             <div className="flex flex-col justify-between gap-y-1.5">
-              <div className="h-5 w-64 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-32 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-24 bg-[#EEE4DA]"></div>
+              <div className="h-5 w-52 sm:w-64 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-28 sm:w-32 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-20 sm:w-24 bg-[#EEE4DA]"></div>
             </div>
           </div>
-          <div className="flex gap-x-3">
-            <div className="w-[5rem] bg-[#EEE4DA]"></div>
+          <div className="relative flex gap-x-3">
+            <div className="w-[4rem] sm:w-[5rem] bg-[#EEE4DA]"></div>
             <div className="flex flex-col justify-between gap-y-1.5">
-              <div className="h-5 w-64 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-32 bg-[#EEE4DA]"></div>
-              <div className="h-4 w-24 bg-[#EEE4DA]"></div>
+              <div className="h-5 w-52 sm:w-64 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-28 sm:w-32 bg-[#EEE4DA]"></div>
+              <div className="h-4 w-20 sm:w-24 bg-[#EEE4DA]"></div>
             </div>
           </div>
         </div>
@@ -250,13 +250,13 @@ export const CheckoutPageSkeleton = () => {
 
       <section className="w-full lg:w-[50%] space-y-2 lg:space-y-4">
         <div className="flex justify-between items-end border-b border-gray-400 py-2 ">
-          <div className="h-6 w-36 bg-[#EEE4DA]"></div>
-          <div className="h-6 w-36 bg-[#EEE4DA]"></div>
+          <div className="h-5 sm:h-6 w-28 sm:w-36 bg-[#EEE4DA]"></div>
+          <div className="h-5 sm:h-6 w-24 sm:w-36 bg-[#EEE4DA]"></div>
         </div>
         <div className="shadow-sm p-4">
-          <div className="h-7 w-72 bg-[#EEE4DA]"></div>
-          <div className="h-3 w-60 mt-1 bg-[#EEE4DA]"></div>
-          <div className="h-3 w-48 mt-1 bg-[#EEE4DA]"></div>
+          <div className="h-6 sm:h-7 w-72 bg-[#EEE4DA]"></div>
+          <div className="h-3 w-60 mt-1.5 sm:mt-1 bg-[#EEE4DA]"></div>
+          <div className="h-3 w-48 mt-1.5 sm:mt-1 bg-[#EEE4DA]"></div>
           <div className="flex mt-2 space-x-4">
             <div className="h-6 w-6 bg-[#EEE4DA]"></div>
             <div className="h-6 w-6 bg-[#EEE4DA]"></div>
