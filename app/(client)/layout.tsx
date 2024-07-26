@@ -21,7 +21,7 @@ export default function RootLayout({
       <ClerkProvider>
         <CartProvider>
           <body
-            className={`${poppins.className} antialiased overflow-x-hidden w-full`}
+            className={`${poppins.className} antialiased overflow-x-hidden w-full scroll-smooth`}
           >
             <Header />
             {children}
