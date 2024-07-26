@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import { CartProvider } from "@/context/cartContext";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,15 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className} antialiased overflow-x-hidden w-full`}
-      >
+      <ClerkProvider>
         <CartProvider>
-          <Header />
-          {children}
-          <Footer />
+          <body
+            className={`${poppins.className} antialiased overflow-x-hidden w-full`}
+          >
+            <Header />
+            {children}
+            <Footer />
+          </body>
         </CartProvider>
-      </body>
+      </ClerkProvider>
     </html>
   );
 }
