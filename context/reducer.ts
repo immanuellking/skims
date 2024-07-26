@@ -13,6 +13,9 @@ export const reducer = (state: StateType, action: ActionType) => {
 
       return { ...state, cart: [action.payload, ...state.cart] };
 
+    case "CLEAR_CART":
+      return { ...state, cart: [] };
+
     case "GET_TOTAL":
       const total = state.cart.reduce((acc, item) => acc + item.total, 0);
       return { ...state, total };

@@ -25,6 +25,7 @@ const CartContext = createContext<{
   state: StateType;
   dispatch: React.Dispatch<ActionType>;
   addItemToCart: (item: CartType) => void;
+  clearCart: () => void;
   getTotal: () => void;
   increaseItem: (id: string) => void;
   decreaseItem: (id: string) => void;
@@ -41,6 +42,7 @@ const CartContext = createContext<{
   state: initialState,
   dispatch: () => null,
   addItemToCart: () => {},
+  clearCart: () => {},
   getTotal: () => {},
   increaseItem: () => {},
   decreaseItem: () => {},
@@ -76,6 +78,10 @@ function CartProvider({ children }: { children: ReactNode }) {
 
   function addItemToCart(item: CartType) {
     dispatch({ type: "ADD_ITEM_TO_CART", payload: item });
+  }
+
+  function clearCart() {
+    dispatch({ type: "CLEAR_CART" });
   }
 
   function getTotal() {
@@ -148,6 +154,7 @@ function CartProvider({ children }: { children: ReactNode }) {
         state,
         dispatch,
         addItemToCart,
+        clearCart,
         getTotal,
         increaseItem,
         decreaseItem,

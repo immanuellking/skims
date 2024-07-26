@@ -71,6 +71,7 @@ type ActionType =
   | { type: "GET_TOTAL" }
   | { type: "INCREASE_ITEM"; payload: string }
   | { type: "DECREASE_ITEM"; payload: string }
+  | { type: "CLEAR_CART" }
   | { type: "DELETE_ITEM"; payload: string }
   | { type: "ADD_ADDRESS"; payload: AddressType }
   | { type: "EDIT_ADDRESS"; payload: AddressType }
