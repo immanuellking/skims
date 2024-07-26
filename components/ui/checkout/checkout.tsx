@@ -19,7 +19,7 @@ export default function Checkout() {
   }
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between w-[90%] mx-auto gap-y-10 sm:gap-x-8 lg:gap-x-16">
+    <div className="flex flex-col sm:flex-row justify-between w-[90%] mx-auto gap-y-8 sm:gap-y-10 sm:gap-x-8 lg:gap-x-16">
       <Receipt cart={state.cart} total={state.total} />
       <Address />
     </div>
