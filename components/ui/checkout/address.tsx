@@ -5,6 +5,7 @@ import ChooseAddress from "./choose-address";
 import SelectedAddress from "./selected-address";
 import { AddressDialog } from "./address-dialog";
 import Payments from "./payments";
+import { toast } from "react-toastify";
 
 export function Address() {
   const [step, setStep] = useState(1);
@@ -21,7 +22,7 @@ export function Address() {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   }, [step]);
 
@@ -61,8 +62,15 @@ export function Address() {
                 className="h-10 w-40 bg-[#62554a] hover:bg-[#998676] text-sm text-white uppercase rounded-lg mt-5 transition-all duration-200 flex items-center justify-center"
                 onClick={() => {
                   if (!state.selectedAddress) {
-                    alert("Choose an address");
+                    toast("Please Select An Address", {
+                      type: "warning",
+                    });
                     return;
+                  }
+                  if (step === 2) {
+                    toast("Address Confirmed", {
+                      type: "success",
+                    });
                   }
                   setStep((prev) => prev + 1);
                 }}

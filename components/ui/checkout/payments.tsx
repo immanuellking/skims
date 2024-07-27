@@ -3,6 +3,7 @@ import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { PaystackButton } from "react-paystack";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Payments() {
   const { user } = useUser();
@@ -22,12 +23,17 @@ export default function Payments() {
     },
     publicKey,
     onSuccess: () => {
-      alert("Thanks for doing business with us! Come back soon!!");
+      toast("Thanks for doing business with us! Come back soon!!", {
+        type: "success",
+      });
       router.push("/successful-payment");
       clearCart();
       clearSelectedAddress();
     },
-    onClose: () => alert("Wait! You need this oil, don't go!!!!"),
+    onClose: () =>
+      toast("Wait! You need this oil, don't go!!!! 😔", {
+        type: "success",
+      }),
   };
 
   return (
