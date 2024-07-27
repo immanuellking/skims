@@ -2,10 +2,12 @@ import { useCart } from "@/context/cartContext";
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { PaystackButton } from "react-paystack";
+import { useRouter } from "next/navigation";
 
 export default function Payments() {
   const { user } = useUser();
   const { state, clearSelectedAddress, clearCart } = useCart();
+  const router = useRouter();
 
   const publicKey: string = process.env
     .NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY as string;
@@ -21,6 +23,7 @@ export default function Payments() {
     publicKey,
     onSuccess: () => {
       alert("Thanks for doing business with us! Come back soon!!");
+      router.push("/successful-payment");
       clearCart();
       clearSelectedAddress();
     },
