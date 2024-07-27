@@ -12,7 +12,7 @@ const ProductCardSkeletons = ({ className }: { className?: string }) => {
       )}
     >
       <div
-        className={`${shimmer} relative w-full h-[220px] xs:h-[300px] overflow-hidden bg-[#f2ded4]`}
+        className={`${shimmer} relative w-full h-[220px] xs:h-[300px] lg:h-[305px] overflow-hidden bg-[#f2ded4]`}
       ></div>
       <div className="w-full space-y-3 flex flex-col items-center">
         <p className="h-4 w-full bg-[#f2ded4]"></p>
