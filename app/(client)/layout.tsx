@@ -5,6 +5,8 @@ import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
 import { CartProvider } from "@/context/cartContext";
 import { ClerkProvider } from "@clerk/nextjs";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,6 +27,7 @@ export default function RootLayout({
           >
             <Header />
             {children}
+            <ToastContainer />
             <Footer />
           </body>
         </CartProvider>
