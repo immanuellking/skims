@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Receipt } from "./checkout-receipt";
 import { Address } from "./address";
 import { CheckoutPageSkeleton } from "@/components/skeletons";
+import EmptyCart from "../cart/empty-cart";
 
 export default function Checkout() {
   const { state, getTotal } = useCart();
@@ -16,6 +17,10 @@ export default function Checkout() {
 
   if (!isClient) {
     return <CheckoutPageSkeleton />;
+  }
+
+  if (!state.cart.length) {
+    return <EmptyCart text="You Can't Checkout An Empty Cart " />;
   }
 
   return (
