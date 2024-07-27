@@ -2,10 +2,9 @@
 import { JustIn } from "@/typing";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
-import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import { useCart } from "@/context/cartContext";
 
 export default function ProductDetails({ item }: { item: JustIn }) {
