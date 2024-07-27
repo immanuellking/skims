@@ -9,6 +9,8 @@ import {
   useReducer,
 } from "react";
 import { reducer } from "./reducer";
+import { toast } from "react-toastify";
+import { capitalize } from "@/lib/utils";
 
 const initialState: StateType = {
   cart: [],
@@ -77,7 +79,16 @@ function CartProvider({ children }: { children: ReactNode }) {
   });
 
   function addItemToCart(item: CartType) {
-    dispatch({ type: "ADD_ITEM_TO_CART", payload: item });
+    const itemExist = state.cart.find((cartItem) => cartItem.id === item.id);
+
+    if (itemExist) {
+      toast(`${capitalize(itemExist.name)} already in cart`, {
+        type: "info",
+      });
+    } else {
+      dispatch({ type: "ADD_ITEM_TO_CART", payload: item });
+      toast(`${capitalize(item.name)} Added To Cart`, { type: "success" });
+    }
   }
 
   function clearCart() {
@@ -89,26 +100,58 @@ function CartProvider({ children }: { children: ReactNode }) {
   }
 
   function increaseItem(id: string) {
+    const itemExist = state.cart.find((cartItem) => cartItem.id === id);
+    if (itemExist)
+      toast(`${capitalize(itemExist.name)} Quantity Increased`, {
+        type: "success",
+      });
     dispatch({ type: "INCREASE_ITEM", payload: id });
   }
 
   function decreaseItem(id: string) {
     dispatch({ type: "DECREASE_ITEM", payload: id });
+    const itemExist = state.cart.find((cartItem) => cartItem.id === id);
+    if (itemExist) {
+      if (itemExist.quantity === 1) {
+        toast(`${capitalize(itemExist.name)} Removed From Cart`, {
+          type: "error",
+        });
+      } else {
+        toast(`${capitalize(itemExist.name)} Quantity Decreased`, {
+          type: "warning",
+        });
+      }
+    }
   }
 
   function deleteItem(id: string) {
+    const itemExist = state.cart.find((cartItem) => cartItem.id === id);
+    if (itemExist) {
+      toast(`${capitalize(itemExist.name)} Removed From Cart`, {
+        type: "error",
+      });
+    }
     dispatch({ type: "DELETE_ITEM", payload: id });
   }
 
   function addAddress(value: AddressType) {
+    toast("Address Added Successfully", {
+      type: "success",
+    });
     dispatch({ type: "ADD_ADDRESS", payload: value });
   }
 
   function editAddress(value: AddressType) {
+    toast("Address Edited Successfully", {
+      type: "info",
+    });
     dispatch({ type: "EDIT_ADDRESS", payload: value });
   }
 
   function deleteAddress(id: string) {
+    toast("Address Deleted Successfully", {
+      type: "error",
+    });
     dispatch({ type: "DELETE_ADDRESS", payload: id });
   }
 
