@@ -315,3 +315,18 @@ export const footer = {
     ],
   },
 };
+
+export const filterData = [
+  {
+    tab: "Type",
+    checks: ["Bodysuits", "Bras", "Jacquard", "Stretch", "Boxers", "Pants"],
+  },
+  {
+    tab: "Material",
+    checks: ["Cotton", "Modal", "Stretch", "Wool"],
+  },
+  {
+    tab: "Size",
+    checks: ["XL", "L", "M"],
+  },
+];
