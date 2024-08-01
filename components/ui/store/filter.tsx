@@ -20,25 +20,30 @@ import {
 } from "@/components/ui/form";
 
 const FormSchema = z.object({
-  check: z.record(z.boolean()).optional(),
+  type: z.string().optional(),
+  material: z.string().optional(),
+  size: z.string().optional(),
 });
 
 export default function Filter() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      check: {},
+      type: "",
+      material: "",
+      size: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log(data);
+    // alert("work")
   }
 
   return (
     <div className="w-full">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <form onChange={form.handleSubmit(onSubmit)} className="space-y-2">
           {filterData.map((filter, index) => (
             <Accordion type="single" collapsible key={index}>
               <AccordionItem value={`item-${index}`} className="border-black">
@@ -50,16 +55,17 @@ export default function Filter() {
                     <FormField
                       key={checkIndex}
                       control={form.control}
-                      name={`check.${check}`}
+                      name={
+                        filter.tab.toLowerCase() as "type" | "material" | "size"
+                      } // This sets the name based on the tab type, material, or size
                       render={({ field }) => (
-                        <FormItem
-                          key={checkIndex}
-                          className="flex flex-row items-center space-x-2 space-y-0"
-                        >
+                        <FormItem className="flex flex-row items-center space-x-2 space-y-0">
                           <FormControl>
                             <Checkbox
-                              checked={field.value || false}
-                              onCheckedChange={(value) => field.onChange(value)}
+                              checked={field.value === check}
+                              onCheckedChange={(value) =>
+                                field.onChange(value ? check : "")
+                              }
                             />
                           </FormControl>
                           <FormLabel className="text-sm">{check}</FormLabel>
@@ -71,7 +77,6 @@ export default function Filter() {
               </AccordionItem>
             </Accordion>
           ))}
-          {/* <Button type="submit">Apply Filters</Button> */}
         </form>
       </Form>
     </div>
