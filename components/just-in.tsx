@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Products from "./ui/products/products";
 import { ProductsCardsSkeleton } from "./skeletons";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default function JustIN({
   title,
@@ -25,14 +26,14 @@ export default function JustIN({
         />
       </Suspense>
       <div className="w-full flex justify-center mt-8 sm:mt-10">
-        <button
+        <Link href="/store"
           className={cn(
-            "py-3 uppercase w-60 xs:w-72 bg-[#62554A] hover:bg-[#8b7a6c] transition-all ease-in duration-300 text-white text-sm xs:text-base font-medium xs:font-semibold rounded-sm",
+            "py-3 uppercase w-60 xs:w-72 bg-[#62554A] hover:bg-[#8b7a6c] text-center transition-all ease-in duration-300 text-white text-sm xs:text-base font-medium xs:font-semibold rounded-sm",
             { hidden: disable }
           )}
         >
           Shop All New Arrivals
-        </button>
+        </Link>
       </div>
     </div>
   );
