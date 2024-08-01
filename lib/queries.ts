@@ -5,16 +5,31 @@ import { error } from "console";
 import { groq } from "next-sanity";
 import { unstable_noStore as noStore } from "next/cache";
 
+export const fetchAllProducts = async (filter?: string) => {
+  noStore();
+
+  const query = groq`${filter}`;
+
+  try {
+    const justInProducts: JustIn[] = await client.fetch(query);
+
+    return {
+      products: justInProducts,
+      error: false,
+    };
+  } catch (error) {
+    console.log("DB Error", error);
+    return {
+      error: true,
+      products: [],
+    };
+  }
+};
+
 export const fetchProducts = async (type?: string) => {
   noStore();
 
-  let query;
-
-  if (!type) {
-    query = groq`*[_type in ["justIn", "trending", "fits"]]`;
-  } else {
-    query = groq`*[_type == "${type}"]`;
-  }
+  const query = groq`*[_type == "${type}"]`;
 
   try {
     const justInProducts: JustIn[] = await client.fetch(query);
