@@ -2,10 +2,14 @@ import { cn } from "@/lib/utils";
 import { urlForImage } from "@/sanity/lib/image";
 import { JustIn } from "@/typing";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Product({ product }: { product: JustIn }) {
   return (
-    <div className="relative col-span-6 sm:col-span-4">
+    <Link
+      href={`/store/${product._type}/${product.slug}`}
+      className="relative col-span-6 sm:col-span-4 cursor-pointer"
+    >
       <div className="relative w-full h-[180px] xs:h-[200px] sm:h-[280px]">
         <Image src={urlForImage(product.images[0])} alt={product.name} fill />
       </div>
@@ -22,8 +26,12 @@ export default function Product({ product }: { product: JustIn }) {
         </span>
       )}
       <div className="flex flex-col items-center">
-        <p className="text-xs capitalize text-gray-500 line-clamp-1">{product.tag}</p>
-        <h4 className="font-semibold uppercase text-[13px] line-clamp-1">{product.name}</h4>
+        <p className="text-xs capitalize text-gray-500 line-clamp-1">
+          {product.tag}
+        </p>
+        <h4 className="font-semibold uppercase text-[13px] line-clamp-1">
+          {product.name}
+        </h4>
         <p className="text-sm font-semibold">
           &#8358;{product.price.toLocaleString()}
         </p>
@@ -37,6 +45,6 @@ export default function Product({ product }: { product: JustIn }) {
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
