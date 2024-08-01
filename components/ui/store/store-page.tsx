@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Store from "./store";
+import StoreProducts from "./store-products";
 
-export default function StorePage() {
+export default function StorePage({sort} : {sort: string}) {
   return (
     <main>
       <div className="relative w-full h-[45vh] sm:h-[40vh] lg:h-[60vh]">
@@ -21,7 +22,9 @@ export default function StorePage() {
         </div>
       </div>
 
-      <Store />
+      <Store>
+        <StoreProducts sort={sort} />
+      </Store>
     </main>
   );
 }
