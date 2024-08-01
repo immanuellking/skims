@@ -1,4 +1,3 @@
-import { fetchProducts } from "@/lib/queries";
 import { Sort } from "./sort";
 import Product from "./product";
 import {
@@ -11,10 +10,20 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "../button";
 import Filter from "./filter";
+import { fetchAllProducts } from "@/lib/queries";
 
-export default async function StoreProducts() {
-  const { products, error } = await fetchProducts();
-  //   console.log("Products", products);
+export default async function StoreProducts({ sort }: { sort: string }) {
+
+  const priceFilter = sort
+    ? `| order(price ${sort === "low-to-high" ? "asc" : "desc"})`
+    : "";
+
+  const productFilter = '*[_type in ["justIn", "trending", "fits"]]';
+
+  const filter = `${productFilter} ${priceFilter}`;
+
+  const { products, error } = await fetchAllProducts(filter);
+
   return (
     <section className="w-full lg:px-8">
       <div className="w-full flex flex-row-reverse justify-between lg:flex-row lg:justify-end">
