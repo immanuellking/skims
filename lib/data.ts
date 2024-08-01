@@ -319,11 +319,11 @@ export const footer = {
 export const filterData = [
   {
     tab: "Type",
-    checks: ["Bodysuits", "Bras", "Jacquard", "Stretch", "Boxers", "Pants"],
+    checks: ["bodysuits", "bras", "jacquard", "stretch", "boxers", "pants"],
   },
   {
     tab: "Material",
-    checks: ["Cotton", "Modal", "Stretch", "Wool"],
+    checks: ["cotton", "modal", "stretch", "wool"],
   },
   {
     tab: "Size",
