@@ -12,7 +12,7 @@ export default function ProductCard({ product }: { product: JustIn }) {
     >
       <div className="relative w-full h-[220px] lg:w-[300px] lg:h-[300px]">
         <Image
-          src={urlForImage(product.images[0])}
+          src={urlForImage(product.image)}
           alt={product.name}
           // width={280}
           // height={280}
