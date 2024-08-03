@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import { urlForImage } from "@/sanity/lib/image";
-import { JustIn } from "@/typing";
+import { AllProducts, JustIn } from "@/typing";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Product({ product }: { product: JustIn }) {
+export default function Product({ product }: { product: AllProducts }) {
   return (
     <Link
       href={`/store/${product._type}/${product.slug}`}
