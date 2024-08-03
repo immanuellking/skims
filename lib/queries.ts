@@ -1,6 +1,6 @@
 import Products from "@/components/ui/products/products";
 import { client } from "@/sanity/lib/client";
-import { JustIn, ReviewPosts } from "@/typing";
+import { AllProducts, JustIn, ProductDetailsType, ReviewPosts } from "@/typing";
 import { error } from "console";
 import { groq } from "next-sanity";
 import { unstable_noStore as noStore } from "next/cache";
@@ -11,7 +11,7 @@ export const fetchAllProducts = async (filter?: string) => {
   const query = groq`${filter}`;
 
   try {
-    const justInProducts: JustIn[] = await client.fetch(query);
+    const justInProducts: AllProducts[] = await client.fetch(query);
 
     return {
       products: justInProducts,
@@ -29,7 +29,16 @@ export const fetchAllProducts = async (filter?: string) => {
 export const fetchProducts = async (type?: string) => {
   noStore();
 
-  const query = groq`*[_type == "${type}"]`;
+  const query = groq`*[_type == "${type}"] {
+  _id, 
+  _type, 
+  tag, 
+  name, 
+  slug, 
+  price, 
+  status, 
+  "image": images[0]
+  }`;
 
   try {
     const justInProducts: JustIn[] = await client.fetch(query);
@@ -77,11 +86,22 @@ export const fetchReviews = async () => {
 };
 
 export const getProduct = async (type: string, slug: string) => {
-  const query = groq`*[_type == "${type}" && slug == "${slug}"]`;
+  const query = groq`*[_type == "${type}" && slug == "${slug}"] {
+  _id, 
+  _type, 
+  tag, 
+  name, 
+  slug, 
+  price, 
+  size, 
+  colors,
+  status, 
+  images,
+  }`;
   // await new Promise((resolve) => setTimeout(resolve, 6000));
 
   try {
-    const item: JustIn[] = await client.fetch(query);
+    const item: ProductDetailsType[] = await client.fetch(query);
 
     return item[0];
   } catch (error) {
