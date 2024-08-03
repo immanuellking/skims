@@ -7,7 +7,22 @@ type SanityBase = {
   _updatedAt: string;
 };
 
-interface JustIn extends SanityBase {
+interface AllProducts {
+  _id: string;
+  _type: string;
+  type: string;
+  material: string;
+  tag: string;
+  name: string;
+  slug: string;
+  price: number;
+  colors: string[];
+  status: string;
+  size: string[];
+  images: Image[];
+}
+interface ProductDetailsType {
+  _id: string;
   _type: string;
   tag: string;
   name: string;
@@ -17,6 +32,17 @@ interface JustIn extends SanityBase {
   status: string;
   size: string[];
   images: Image[];
+}
+
+interface JustIn {
+  _id: string;
+  _type: string;
+  tag: string;
+  name: string;
+  slug: string;
+  price: number;
+  status: string;
+  image: Image;
 }
 
 interface ReviewPosts {
