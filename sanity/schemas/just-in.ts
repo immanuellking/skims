@@ -58,6 +58,26 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "type",
+      title: "Type",
+      type: "array",
+      of: [
+        {
+          type: "string",
+        },
+      ],
+    }),
+    defineField({
+      name: "material",
+      title: "Material",
+      type: "array",
+      of: [
+        {
+          type: "string",
+        },
+      ],
+    }),
+    defineField({
       name: "images",
       title: "Images",
       type: "array",
