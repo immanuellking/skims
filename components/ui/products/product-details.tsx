@@ -1,13 +1,14 @@
 "use client";
-import { JustIn } from "@/typing";
+
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
 import { useState } from "react";
 import { HiStar } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { useCart } from "@/context/cartContext";
+import { ProductDetailsType } from "@/typing";
 
-export default function ProductDetails({ item }: { item: JustIn }) {
+export default function ProductDetails({ item }: { item: ProductDetailsType }) {
   const [current, setCurrent] = useState(0);
   const { addItemToCart } = useCart();
   const cartItem = {
