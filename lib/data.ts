@@ -323,10 +323,10 @@ export const filterData = [
   },
   {
     tab: "Material",
-    checks: ["cotton", "modal", "stretch", "wool"],
+    checks: ["cotton", "modal", "stretch", "wool", "lace"],
   },
   {
     tab: "Size",
-    checks: ["XL", "L", "M"],
+    checks: ["XXXL", "XXL", "XL", "L", "M", "S", "XS"],
   },
 ];
