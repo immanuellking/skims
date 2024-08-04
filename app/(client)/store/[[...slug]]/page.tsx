@@ -8,11 +8,16 @@ export default async function Page({
   searchParams,
 }: {
   params: { slug: string[] };
-  searchParams: { price: string };
+  searchParams: { price: string; type: string; material: string; size: string };
 }) {
   if (!params?.slug || params.slug.length === 0) {
     const sort = searchParams.price || "";
-    return <StorePage sort={sort} />;
+    const type = searchParams.type || "";
+    const material = searchParams.material || "";
+    const size = searchParams.size || "";
+    return (
+      <StorePage sort={sort} type={type} material={material} size={size} />
+    );
   }
 
   const [type, slug] = params?.slug;
