@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Store from "./store";
 import StoreProducts from "./store-products";
+import { Suspense } from "react";
+import { StorePageSkeleteon } from "@/components/skeletons";
 
-export default function StorePage({sort} : {sort: string}) {
+export default function StorePage({
+  sort,
+  type,
+  material,
+  size,
+}: {
+  sort: string;
+  type: string;
+  material: string;
+  size: string;
+}) {
   return (
     <main>
-      <div className="relative w-full h-[45vh] sm:h-[40vh] lg:h-[60vh]">
+      <div className="relative w-full h-[40vh] lg:h-[60vh]">
         <Image
           src="/hero/hero-2.webp"
           alt="hero-img"
@@ -23,7 +35,14 @@ export default function StorePage({sort} : {sort: string}) {
       </div>
 
       <Store>
-        <StoreProducts sort={sort} />
+        <Suspense fallback={<StorePageSkeleteon />}>
+          <StoreProducts
+            sort={sort}
+            type={type}
+            material={material}
+            size={size}
+          />
+        </Suspense>
       </Store>
     </main>
   );
