@@ -327,6 +327,6 @@ export const filterData = [
   },
   {
     tab: "Size",
-    checks: ["XXXL", "XXL", "XL", "L", "M", "S", "XS"],
+    checks: ["XXL", "XL", "L", "M", "S", "XS"],
   },
 ];
