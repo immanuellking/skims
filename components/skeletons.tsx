@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 const shimmer =
   "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent";
@@ -281,5 +282,114 @@ export const AuthLoader = () => {
     <div className="w-full h-full flex items-center justify-center">
       <div className="bars-5"></div>
     </div>
+  );
+};
+
+export const StorePageSkeleteon = () => {
+  return (
+    <section className="w-full lg:px-8">
+      <div className="w-full flex flex-row-reverse justify-between lg:flex-row lg:justify-end">
+        <Skeleton className="w-[100px] h-10 bg-[#EEE4DA] lg:hidden" />
+        <Skeleton className="w-[100px] h-10 bg-[#EEE4DA]" />
+      </div>
+      <div className="grid grid-cols-12 gap-y-10 gap-x-2 xs:gap-x-4 sm:gap-x-8 lg:gap-16 mt-10">
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+        <div className="relative col-span-6 sm:col-span-4 cursor-pointer">
+          <Skeleton className="w-full h-[180px] xs:h-[200px] sm:h-[275px] mb-[5px] bg-[#EEE4DA] rounded-none" />
+
+          <div className="flex flex-col items-center">
+            <div className="gap-y-1.5 w-full flex flex-col items-center">
+              <Skeleton className="w-[120px] sm:w-[150px] h-3 bg-[#EEE4DA]" />
+              <Skeleton className="w-full sm:w-[200px] h-4 bg-[#EEE4DA]" />
+              <Skeleton className="w-[80px] h-4 bg-[#EEE4DA]" />
+            </div>
+            <div className="flex gap-1 mt-2">
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+              <Skeleton className="w-4 h-4 rounded-full bg-[#EEE4DA]" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
