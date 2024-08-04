@@ -18,6 +18,7 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   type: z.string().optional(),
@@ -26,18 +27,31 @@ const FormSchema = z.object({
 });
 
 export default function Filter() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const params = new URLSearchParams(searchParams);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      type: "",
-      material: "",
-      size: "",
+      type: params.get("type") || "",
+      material: params.get("material") || "",
+      size: params.get("size") || "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
-    // alert("work")
+    // const params = new URLSearchParams(searchParams);
+
+    for (const [key, value] of Object.entries(data)) {
+      if (value) {
+        params.set(key, value);
+      } else {
+        params.delete(key);
+      }
+      router.replace(`${pathname}?${params.toString()}`);
+    }
   }
 
   return (
