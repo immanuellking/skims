@@ -8,7 +8,7 @@ export default function Page() {
         <h1 className="text-[30px] sm:text-4xl lg:text-5xl font-medium text-[#62554a]">
           My Bag
         </h1>
-        <Link href="/shop" className="text-sm sm:text-base font-medium text-[#62554a]">
+        <Link href="/store" className="text-sm sm:text-base font-medium text-[#62554a]">
           Continue Shopping...
         </Link>
       </div>
