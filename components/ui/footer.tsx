@@ -5,6 +5,12 @@ import { BsChevronDown } from "react-icons/bs";
 import { footer } from "@/lib/data";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "./accordion";
 
 export default function Footer() {
   const [open, setOpen] = useState(false);
@@ -94,58 +100,42 @@ export default function Footer() {
         </div>
 
         <div className="mt-5 lg:hidden space-y-4">
-          <div className="border-b-[1px] py-2 border-black overflow-hidden space-y-2">
-            <div
-              className="flex justify-between items-center"
-              onClick={() => setOpen(!open)}
-            >
-              <h1 className="text-[#62554a] uppercase">{footer.help.title}</h1>
-              <BsChevronDown
-                className={cn("text-base", { "rotate-180": open })}
-              />
-            </div>
-            <ul
-              className={cn(
-                "text-[rgb(171,143,128)] flex flex-col items-center gap-y-2",
-                { "h-0 opacity-0": !open, "h-auto opacity-100 py-2": open }
-              )}
-            >
-              {footer.help.links.map((link, idx) => (
-                <li
-                  className="cursor-pointer hover:text-[rgb(131,96,78)]"
-                  key={idx}
-                >
-                  {link}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="border-b-[1px] py-2 border-black overflow-hidden space-y-2">
-            <div
-              className="flex justify-between items-center"
-              onClick={() => setMoreOpen(!moreOpen)}
-            >
-              <h1 className="text-[#62554a] uppercase">{footer.more.title}</h1>
-              <BsChevronDown
-                className={cn("text-base", { "rotate-180": moreOpen })}
-              />
-            </div>
-            <ul
-              className={cn(
-                "text-[rgb(171,143,128)] flex flex-col items-center gap-y-2",
-                { "h-0 opacity-0": !moreOpen, "h-auto opacity-100 py-2": moreOpen }
-              )}
-            >
-              {footer.more.links.map((link, idx) => (
-                <li
-                  className="cursor-pointer hover:text-[rgb(131,96,78)]"
-                  key={idx}
-                >
-                  {link}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Accordion type="multiple" >
+            <AccordionItem value={footer.help.title} className="border-black">
+              <AccordionTrigger className="text-[#62554a] uppercase">
+                {footer.help.title}
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 text-black">
+                <ul className="text-[rgb(171,143,128)] flex flex-col items-center gap-y-2">
+                  {footer.help.links.map((link, idx) => (
+                    <li
+                      className="cursor-pointer hover:text-[rgb(131,96,78)]"
+                      key={idx}
+                    >
+                      {link}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value={footer.more.title} className="border-black">
+              <AccordionTrigger className="text-[#62554a] uppercase">
+                {footer.more.title}
+              </AccordionTrigger>
+              <AccordionContent className="space-y-2 text-black">
+                <ul className="text-[rgb(171,143,128)] flex flex-col items-center gap-y-2">
+                  {footer.more.links.map((link, idx) => (
+                    <li
+                      className="cursor-pointer hover:text-[rgb(131,96,78)]"
+                      key={idx}
+                    >
+                      {link}
+                    </li>
+                  ))}
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </footer>
