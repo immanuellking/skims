@@ -146,7 +146,7 @@ export default function ProductDetails({ item }: { item: ProductDetailsType }) {
                   Discover the perfect blend of style and comfort with our
                   latest collection. Each piece is meticulously crafted to offer
                   a seamless fit, ensuring you look your best on every occasion.
-                  Whether you're dressing up for a night out or keeping it
+                  Whether you&apos;re dressing up for a night out or keeping it
                   casual for a day at the office, our versatile designs are
                   tailored to meet your needs. Experience fashion like never
                   before with high-quality fabrics and attention to detail that
