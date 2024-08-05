@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/shadcn/hover-card";
 import {
   HiArrowSmDown,
-  HiOutlineHeart,
   HiOutlineShoppingBag,
   HiUserCircle,
   HiMenuAlt3,
@@ -25,6 +24,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/cartContext";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { MobileNav } from "./mobile-nav";
 
 export default function Header() {
   const { state } = useCart();
@@ -203,36 +203,4 @@ export default function Header() {
   );
 }
 
-const MobileNav = ({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: (val: boolean) => void;
-}) => {
-  return (
-    <div
-      className={cn(
-        "lg:hidden fixed top-0 bottom-0 right-[-1000px] w-full h-full bg-gray-100 z-50 px-5 py-8 space-y-8 sm:space-y-12 transition-all duration-300 ease-in",
-        {
-          "right-0": open,
-        }
-      )}
-    >
-      <div className="w-full flex justify-end">
-        <HiOutlineX className="text-3xl" onClick={() => setOpen(false)} />
-      </div>
-      <div className="space-y-6 sm:space-y-4">
-        {dropdown.map((item, index) => (
-          <div
-            className="flex justify-between border-b-2 border-black py-1 md:py-3"
-            key={index}
-          >
-            <p className="text-base sm:text-lg">{item.title}</p>
-            <HiOutlineChevronDown className="text-lg" />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+
