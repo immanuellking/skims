@@ -7,6 +7,12 @@ import { HiStar } from "react-icons/hi";
 import { BsChevronDown } from "react-icons/bs";
 import { useCart } from "@/context/cartContext";
 import { ProductDetailsType } from "@/typing";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../accordion";
 
 export default function ProductDetails({ item }: { item: ProductDetailsType }) {
   const [current, setCurrent] = useState(0);
@@ -130,18 +136,98 @@ export default function ProductDetails({ item }: { item: ProductDetailsType }) {
         </div>
 
         <div className="mt-5">
-          <div className="flex justify-between item-center border-b-[1px] border-black py-4">
-            <p className="text-gray-600 uppercase">Description</p>
-            <BsChevronDown />
-          </div>
-          <div className="flex justify-between item-center border-b-[1px] border-black py-4">
-            <p className="text-gray-600 uppercase">Fit & Fabric</p>
-            <BsChevronDown />
-          </div>
-          <div className="flex justify-between item-center border-b-[1px] border-black py-4">
-            <p className="text-gray-600 uppercase">Shipping & Return</p>
-            <BsChevronDown />
-          </div>
+          <Accordion type="multiple">
+            <AccordionItem value="description" className="border-black">
+              <AccordionTrigger className="text-gray-500 uppercase">
+                Description
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-400">
+                <div>
+                  Discover the perfect blend of style and comfort with our
+                  latest collection. Each piece is meticulously crafted to offer
+                  a seamless fit, ensuring you look your best on every occasion.
+                  Whether you're dressing up for a night out or keeping it
+                  casual for a day at the office, our versatile designs are
+                  tailored to meet your needs. Experience fashion like never
+                  before with high-quality fabrics and attention to detail that
+                  set our products apart.
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="fit-fabric" className="border-black">
+              <AccordionTrigger className="text-gray-500 uppercase">
+                Fits & Fabric
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-400 space-y-2">
+                <div>
+                  <h4 className="text-gray-500">Fits:</h4>
+                  <ul className="ml-4 list-disc">
+                    <li>
+                      Designed to provide a flattering silhouette that
+                      complements all body types.
+                    </li>
+                    <li>
+                      Available in various sizes to ensure the perfect fit for
+                      everyone.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-gray-500">Fabric:</h4>
+                  <ul className="ml-4 list-disc">
+                    <li>
+                      Made from premium, breathable materials that offer
+                      superior comfort and durability.
+                    </li>
+                    <li>
+                      Easy-care fabrics that maintain their quality wash after
+                      wash.
+                    </li>
+                    <li>
+                      Composition: 60% Cotton, 40% Polyester for a soft yet
+                      resilient feel.
+                    </li>
+                  </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="shipping-returns" className="border-black">
+              <AccordionTrigger className="text-gray-500 uppercase">
+                Shipping & Returns
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-400 space-y-2">
+                <div>
+                  <h4 className="text-gray-500">Shipping:</h4>
+                  <ul className="ml-4 list-disc">
+                    <li>Free standard shipping on all orders over $50.</li>
+                    <li>
+                      Express shipping options available at checkout for faster
+                      delivery.
+                    </li>
+                    <li>
+                      Orders are processed within 1-2 business days and
+                      typically delivered within 5-7 business days.
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-gray-500">Returns:</h4>
+                  <ul className="ml-4 list-disc">
+                    <li>Hassle-free returns within 30 days of purchase.</li>
+                    <li>
+                      Items must be in original condition with tags attached for
+                      a full refund.
+                    </li>
+                    <li>Return shipping is free for all domestic orders.</li>
+                    <li>
+                      To initiate a return, please contact our customer service
+                      team or visit our returns portal
+                    </li>
+                  </ul>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </div>
