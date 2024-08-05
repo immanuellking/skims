@@ -1,6 +1,6 @@
 "use client";
 import { useCart } from "@/context/cartContext";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CartItems from "./cart-items";
 import CartReceipt from "./cart-receipt";
 import { CartPageSkeleton } from "@/components/skeletons";
@@ -13,19 +13,22 @@ export default function Cart() {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  useEffect(() => {
-    getTotal();
-  }, [state.cart]);
 
+  const memoizedGetTotal = useCallback(() => {
+    getTotal();
+  }, [getTotal]);
+
+  useEffect(() => {
+    memoizedGetTotal();
+  }, [state.cart, memoizedGetTotal]);
+  
   if (!isClient) {
     // Render a fallback or loading state during hydration
     return <CartPageSkeleton />;
   }
 
   if (!state.cart.length) {
-    return (
-      <EmptyCart text="Your Cart Is Empty" />
-    );
+    return <EmptyCart text="Your Cart Is Empty" />;
   }
 
   return (
