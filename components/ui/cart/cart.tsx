@@ -13,10 +13,11 @@ export default function Cart() {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
   useEffect(() => {
     getTotal();
-    // eslint-disable-next-line react-hooks/exhaustive-deps;
-  }, [state.cart]);
+    
+  }, [state.cart, getTotal]);
 
   if (!isClient) {
     // Render a fallback or loading state during hydration

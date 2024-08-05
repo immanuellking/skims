@@ -7,6 +7,7 @@ import {
   useContext,
   useEffect,
   useReducer,
+  useCallback,
 } from "react";
 import { reducer } from "./reducer";
 import { toast } from "react-toastify";
@@ -95,9 +96,9 @@ function CartProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "CLEAR_CART" });
   }
 
-  function getTotal() {
+  const getTotal = useCallback(() => {
     dispatch({ type: "GET_TOTAL" });
-  }
+  }, [dispatch, state.cart]);
 
   function increaseItem(id: string) {
     const itemExist = state.cart.find((cartItem) => cartItem.id === id);
