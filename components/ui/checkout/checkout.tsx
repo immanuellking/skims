@@ -13,6 +13,7 @@ export default function Checkout() {
   useEffect(() => {
     setIsClient(true);
     getTotal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!isClient) {
