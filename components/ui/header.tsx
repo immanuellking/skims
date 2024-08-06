@@ -15,8 +15,6 @@ import {
   HiOutlineShoppingBag,
   HiUserCircle,
   HiMenuAlt3,
-  HiOutlineX,
-  HiOutlineChevronDown,
 } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 import { texts, dropdown } from "@/lib/data";
@@ -25,11 +23,13 @@ import Link from "next/link";
 import { useCart } from "@/context/cartContext";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { MobileNav } from "./mobile-nav";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { state } = useCart();
   const [open, setOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
@@ -87,8 +87,18 @@ export default function Header() {
                   <HoverCard>
                     <HoverCardTrigger>
                       <div className="flex items-center cursor-pointer">
-                        <p className="text-xs font-medium">{item.title}</p>
-                        {item.linksContent && <HiArrowSmDown />}
+                        {item.linksContent ? (
+                          <p className="text-xs font-medium flex items-center">
+                            {item.title} <HiArrowSmDown className="text-base" />
+                          </p>
+                        ) : (
+                          <p
+                            onClick={() => router.push("/store")}
+                            className="text-xs font-medium"
+                          >
+                            {item.title}
+                          </p>
+                        )}
                       </div>
                     </HoverCardTrigger>
                     {item.linksContent && (
@@ -108,6 +118,7 @@ export default function Header() {
                                   {item.links.map((link, index) => (
                                     <p
                                       key={index}
+                                      onClick={() => router.push("/store")}
                                       className={cn(
                                         "text-xs cursor-pointer hover:text-[#AB8F80]",
                                         {
@@ -202,5 +213,3 @@ export default function Header() {
     </header>
   );
 }
-
-
