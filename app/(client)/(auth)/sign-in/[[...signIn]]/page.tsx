@@ -1,8 +1,12 @@
 "use client";
 import { AuthLoader } from "@/components/skeletons";
 import { SignIn } from "@clerk/nextjs";
-
 import { useState, useEffect } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sign In",
+};
 
 export default function Page() {
   const [isClient, setIsClient] = useState(false);

@@ -2,6 +2,11 @@ import { ProductDetailsPageSkeleton } from "@/components/skeletons";
 import ProductDetailsPage from "@/components/ui/products/product-details-page";
 import StorePage from "@/components/ui/store/store-page";
 import { Suspense } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Store",
+};
 
 export default async function Page({
   params,

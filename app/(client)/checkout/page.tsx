@@ -1,5 +1,10 @@
 import Checkout from "@/components/ui/checkout/checkout";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Checkout",
+};
 
 export default function Page() {
   return (

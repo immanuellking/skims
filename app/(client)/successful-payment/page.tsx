@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Payment Succesful",
+};
 
 export default function Page() {
   return (
