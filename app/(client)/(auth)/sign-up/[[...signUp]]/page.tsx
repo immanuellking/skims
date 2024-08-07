@@ -3,16 +3,9 @@
 import { AuthLoader } from "@/components/skeletons";
 import { SignUp } from "@clerk/nextjs";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Sign Up",
-};
 
 export default function Page() {
   const [isClient, setIsClient] = useState(false);
-  const router = useRouter;
 
   useEffect(() => {
     setIsClient(true);
