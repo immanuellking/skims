@@ -11,7 +11,6 @@ import {
 import { Button } from "../button";
 import Filter from "./filter";
 import { fetchAllProducts } from "@/lib/queries";
-import Image from "next/image";
 
 export default async function StoreProducts({
   sort,

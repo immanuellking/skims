@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PaystackButton } from "react-paystack";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { useMemo } from "react";
 
 export default function Payments() {
   const { user } = useUser();
@@ -13,6 +14,8 @@ export default function Payments() {
   const publicKey: string = process.env
     .NEXT_PUBLIC_PAYSTACK_TEST_PUBLIC_KEY as string;
 
+  const reference = useMemo(() => new Date().getTime().toString(),[]);
+
   const componentProps = {
     email: user?.primaryEmailAddress?.emailAddress || "",
     amount: state.total * 100,
@@ -21,18 +24,17 @@ export default function Payments() {
       phone: state.selectedAddress?.phoneNumber,
       custom_fields: [],
     },
+    reference,
     publicKey,
     onSuccess: () => {
       toast("Thanks for doing business with us! Come back soon!!", {
         type: "success",
       });
       router.push("/successful-payment");
-      clearCart();
-      clearSelectedAddress();
     },
     onClose: () =>
-      toast("Wait! You need this oil, don't go!!!! 😔", {
-        type: "success",
+      toast("Wait! don't go!!!! 😔", {
+        type: "error",
       }),
   };
 
