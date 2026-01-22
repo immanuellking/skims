@@ -1,3 +1,5 @@
+"use server"
+
 import Products from "@/components/ui/products/products";
 import { client } from "@/sanity/lib/client";
 import { AllProducts, JustIn, ProductDetailsType, ReviewPosts } from "@/typing";
