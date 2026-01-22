@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import React from "react";
+import { useEffect } from "react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
@@ -24,6 +24,12 @@ export default function ChooseAddress() {
     setDialogStatus("edit");
     openDialog();
   }
+
+  useEffect(() => {
+    if(state.addresses.length === 1) {
+      setSelectedAddress(state.addresses[0].id)
+    }
+  }, [])
 
   return (
     <div className="space-y-4">
